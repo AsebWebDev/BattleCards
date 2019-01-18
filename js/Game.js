@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 
 class Game {
-  constructor(){
-    this.cardsArray = [];
+  constructor(cardsArray){
+    this.cardsArray = cardsArray;
   }
 }
