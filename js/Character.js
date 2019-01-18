@@ -81,6 +81,6 @@ let cardsArray = [
   strongWarrior,
   linkHero,
   dumbZombie,
-  imgNonBinary,
+  nonBinary,
   pinkKirby
 ];
