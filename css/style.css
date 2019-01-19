@@ -22,6 +22,18 @@ header {
 
 /* Board Player 1  */
 
+.header-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.header-box span {
+  font-size: 3rem;
+  color: white;
+}
+
 #p1-board {
   width: 20%;
   background-color: #520556;
@@ -48,8 +60,6 @@ background-color:#ff9900;
   border-bottom-right-radius: 5px;
 }
 
-.header-box {
-}
 
 /* G A M E B O A R D  */
 gameboard {
@@ -58,16 +68,26 @@ gameboard {
   margin-top: 30px;
 }
 
-#p1-stack {
-  border: 1px solid black;
-
+.p-stack {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
   background-color: #ff9900;
   height: 300px;
   width: 30%;
 }
 
+.p-cards {
+  display: flex;
+  flex-direction: row;
+}
+
+#p1-stack {
+  
+}
+
 #battle-field {
-  border: 1px solid black;
+  border: 2px solid black;
   height: 400px;
   width: 60%;
   background-color: #CA431D;
@@ -75,11 +95,17 @@ gameboard {
 }
 
 #p2-stack {
-  border: 1px solid black;
-  background-color: #ff9900;
-  height: 300px;
-  width: 30%;
+  
 }
+
+
+/* .p-card {
+  color:white;
+  height: 160px;
+  width: 110px;
+  border: 1px solid black;
+  margin: 5px;
+} */
 
 /* C A R D  */
 
@@ -90,15 +116,17 @@ gameboard {
   text-align: center;
   padding: 7px;;
   margin: 5px;
-  height: 20vh;
+  height: 140px;
   width: 100px;
   border-radius: 15px;
   background-color: #ca431d;
 }
 
 .bc img {
-  height: 8vh;
-  width: 5vw;
+  /* height: 8vh;
+  width: 5vw; */
+  height: 60px;
+  width: 60px;
   border-radius: 10px;
   margin-bottom: 5px;
 }

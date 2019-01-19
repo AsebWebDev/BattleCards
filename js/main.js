@@ -4,18 +4,32 @@
 
 // G E T   D O M 
 let cardStack = $("#card-stack");
-let allCards = $(".bc");
 
 // G A M E    I N I T
 
 let game = new Game(cardsArray); //array comes from Character.js
-let player1 = new Player();
-let player2 = new Player();
+let player1 = new Player("Player 1");
+let player2 = new Player("Player 2");
 
 printCharacters(); // to console, just for Dev
 fillCardStack();
 
+//set Player 1 default ... TODO: dice, who is first
+game.currentPlayer = player1;
 
+
+
+// C L I C K   L I S T E N E R S
+$(".bc").click(function() {
+  clickedCard = $(this).attr("name");
+  if (game.currentPlayer === player1) {
+    player1.currentCards.push(clickedCard);
+    $(".p1-cards").append(this);
+  } else {
+    player2.currentCards.push(clickedCard);
+    $(".p2-cards").append(this);
+  }
+});
 
 // F U N C T I O N S
 
@@ -36,16 +50,21 @@ function fillCardStack() {
 
   for (let i = 0; i < 6; i++) {
     let htmlBc = "";
-    htmlBc += '<div class="bc">';
+    htmlBc += '<div class="bc" name="'+game.cardsArray[i].name+'">';
     htmlBc += '<img src=' + game.cardsArray[i].img + '>';
     htmlBc += '<span>' + game.cardsArray[i].name + '</span>';
-    htmlBc += '<div class="properties">'
+    htmlBc += '<div class="properties">';
     htmlBc += '<p>Strength: ' + game.cardsArray[i].strength + '</p>'
     htmlBc += '<p>Intelligence ' + game.cardsArray[i].intelligence + '</p>'
     htmlBc += '<p>Humor: ' + game.cardsArray[i].humor + '</p>'
     htmlBc += '<p>Cuteness: ' + game.cardsArray[i].cuteness + '</p>'
     cardStack.append(htmlBc);
   }
+}
+
+function switchPlayer (){
+  if (game.currentPlayer === player1) game.currentPlayer = player2;
+  else game.currentPlayer = player2;
 }
 
 function findWinner(BC1property, BC2property) {

@@ -20,7 +20,7 @@ let imgLinkHero = "../img/link.png";
 let imgDumbZombie = "../img/assets-2029818_960_720.png";
 let imgCuteMonster = "../img/cuteMonster.jpg";
 let imgStrongWarrior = "../img/strongWarrior.jpg";
-let imgBlooper = "/img/blooper.jpg";
+let imgBlooper = "/img/Blooper_MK7.png";
 
 // Characters
 let blooper = new Character(

@@ -10,16 +10,30 @@
 <body>
 
   <header>
-    <div class="header-box" id="p1-board"></div>
+    <div class="header-box" id="p1-board">
+      <span id="p1-name">Player 1</span>
+      <em>Click to change name</em>
+    </div>
     <div class="header-box" id="card-stack">
     </div>
-    <div class="header-box" id="p2-board"></div>
+    <div class="header-box" id="p2-board">
+      <span id="p2-name">Player 2</span>
+      <em>Click to change name</em>
+    </div>
   </header>
 
   <gameboard>
-    <div id="p1-stack"></div>
+    <div class="p-stack" id="p1-stack">
+      <div class="p-cards p1-cards">
+
+      </div>
+    </div>
     <div id="battle-field"></div>
-    <div id="p2-stack"></div>    
+    <div class="p-stack" id="p2-stack">
+        <div class="p-cards p2-cards">
+        
+        </div>
+    </div>    
   </gameboard>
 
   <script
@@ -28,8 +42,8 @@
   crossorigin="anonymous"></script>
   <script src="/js/utils.js"></script>
   <script src="/js/Character.js"></script>
-  <script src="/js/Game.js"></script>
   <script src="/js/Player.js"></script>
+  <script src="/js/Game.js"></script>
   <script src="/js/main.js"></script>
 </body>
 </html>
