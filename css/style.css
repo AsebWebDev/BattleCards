@@ -1,6 +1,21 @@
+/* body {
+  background: #520556; 
+  background: -webkit-linear-gradient(to right, #8B104E, #520556);
+  background: linear-gradient(to right, #8B104E, #520556);
+} */
+
+body {
+  background-color: #8b104e;
+}
+
+/* COLOR PALETTE */
+/* First: #ff9900 */
+/* Seconds: #CA431D */
+/* Third: #8B104E */
+/* Fourth: #520556: */
+
 /* H E A D E R  */
 header {
-  border: 1px solid green;
   display: flex;
   flex-direction: row;
 }
@@ -9,6 +24,9 @@ header {
 
 #p1-board {
   width: 20%;
+  background-color: #520556;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 /* Card Stack  */
@@ -18,16 +36,19 @@ width: 60%;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
+background-color:#ff9900;
 }
 
 /* Board Player 2  */
 
 #p2-board {
   width: 20%;
+  background-color: #520556;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .header-box {
-  border: 1px solid orange;
 }
 
 /* G A M E B O A R D  */
@@ -39,6 +60,8 @@ gameboard {
 
 #p1-stack {
   border: 1px solid black;
+
+  background-color: #ff9900;
   height: 300px;
   width: 30%;
 }
@@ -46,11 +69,14 @@ gameboard {
 #battle-field {
   border: 1px solid black;
   height: 400px;
-  width: 60%
+  width: 60%;
+  background-color: #CA431D;
+
 }
 
 #p2-stack {
   border: 1px solid black;
+  background-color: #ff9900;
   height: 300px;
   width: 30%;
 }
@@ -62,30 +88,37 @@ gameboard {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 1px solid blue;
-  padding: 5px;;
+  padding: 7px;;
   margin: 5px;
   height: 20vh;
   width: 100px;
+  border-radius: 15px;
+  background-color: #ca431d;
 }
 
 .bc img {
   height: 8vh;
   width: 5vw;
+  border-radius: 10px;
+  margin-bottom: 5px;
 }
 
 .bc span {
-  font-size: 0.6rem;
+  font-size: 0.9rem;
   font-weight: bold;
+  color: #520556;
 }
 
 .properties p {
-  font-size: 0.5rem;
-  color: green;
+  line-height: 0;
+  font-size: 0.8rem;
+  color: white;
 }
 
-.bc li {
-  font-size: 0.3rem;
+@media (max-width: 320px) {
+
+  body { 
+     font-size: 2em; 
+  }
+
 }
-
-

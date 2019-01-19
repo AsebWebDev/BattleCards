@@ -20,18 +20,8 @@ let imgLinkHero = "../img/link.png";
 let imgDumbZombie = "../img/assets-2029818_960_720.png";
 let imgCuteMonster = "../img/cuteMonster.jpg";
 let imgStrongWarrior = "../img/strongWarrior.jpg";
-let imgBlooper = "/img/blooper.jpg";
 
 // Characters
-let blooper = new Character(
-  "Blooper", // Name
-  imgBlooper, // Image
-  3, // Strength
-  4, // Intelligence
-  9, // Humor
-  8 // Cuteness
-);
-
 let nonBinary = new Character(
   "Non Binary", // Name
   imgNonBinary, // Image
@@ -92,6 +82,5 @@ let cardsArray = [
   linkHero,
   dumbZombie,
   nonBinary,
-  pinkKirby,
-  blooper
+  pinkKirby
 ];
