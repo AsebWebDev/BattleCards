@@ -1,9 +1,8 @@
 /* H E A D E R  */
 header {
-  border: 1px solid black;
+  border: 1px solid green;
   display: flex;
   flex-direction: row;
-  /* height: 70%; */
 }
 
 #p1-board {
@@ -14,16 +13,16 @@ header {
 width: 60%;
 display: flex;
 flex-direction: row;
-justify-content: center;
+justify-content: space-around;
+
 }
 
 #p1-board {
   width: 20%;
-
 }
 
 .header-box {
-  border: 1px solid black;
+  border: 1px solid orange;
 }
 
 /* G A M E B O A R D  */
@@ -59,14 +58,14 @@ gameboard {
   justify-content: flex-start;
   text-align: center;
   border: 1px solid blue;
-  height: 180px;
-  width: 90px;
   padding: 10px;
   margin: 2px;
+  height: 20vh;
+  width: 8vh;
 }
 
 .bc img {
-  height: 80px;
+  height: 8vh;
 }
 
 
