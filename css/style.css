@@ -60,6 +60,15 @@ background-color:#ff9900;
   border-bottom-right-radius: 5px;
 }
 
+/* I N F O B O X  */
+
+#infobox {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+
+}
+
 
 /* G A M E B O A R D  */
 gameboard {

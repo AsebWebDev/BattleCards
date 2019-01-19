@@ -17,24 +17,55 @@ fillCardStack();
 //set Player 1 default ... TODO: dice, who is first
 game.currentPlayer = player1;
 
+$("#infobox button").click(function () {
+  startPhase1();
+});
 
-
-// C L I C K   L I S T E N E R S
-$(".bc").click(function() {
-  clickedCard = $(this).attr("name");
-  if (game.currentPlayer === player1) {
-    player1.currentCards.push(clickedCard);
-    $(".p1-cards").append(this);
-  } else {
-    player2.currentCards.push(clickedCard);
-    $(".p2-cards").append(this);
+$("#p1-name").click(function(){
+  let enteredName = prompt("What is your name, Player 1?");
+  if (enteredName != null) {
+    player1.name = enteredName;
+    $("#p1-name span").text(player1.name);
   }
 });
+
+$("#p2-name").click(function(){
+  let enteredName = prompt("What is your name, Player 2?");
+  if (enteredName != null) {
+    player2.name = enteredName;
+    $("#p2-name span").text(player2.name);
+  }
+});
+
+
+function startPhase1() {
+  game.currentPhase = 1;
+  $("#infobox button").text("Your turn "+game.currentPlayer.name);
+
+  // Click Listener Cardstack
+  $("#card-stack .bc").click(function () {
+    clickedCard = $(this).attr("name");
+    if (game.currentPlayer === player1) {
+      player1.currentCards.push(clickedCard);
+      $(".p1-cards").append(this);
+      switchPlayer();
+
+    } else {
+      player2.currentCards.push(clickedCard);
+      $(".p2-cards").append(this);
+      switchPlayer();
+    }
+  });
+
+
+}
+
 
 // F U N C T I O N S
 
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+  var currentIndex = array.length,
+    temporaryValue, randomIndex;
   while (0 !== currentIndex) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
@@ -50,7 +81,7 @@ function fillCardStack() {
 
   for (let i = 0; i < 6; i++) {
     let htmlBc = "";
-    htmlBc += '<div class="bc" name="'+game.cardsArray[i].name+'">';
+    htmlBc += '<div class="bc" name="' + game.cardsArray[i].name + '">';
     htmlBc += '<img src=' + game.cardsArray[i].img + '>';
     htmlBc += '<span>' + game.cardsArray[i].name + '</span>';
     htmlBc += '<div class="properties">';
@@ -62,13 +93,17 @@ function fillCardStack() {
   }
 }
 
-function switchPlayer (){
-  if (game.currentPlayer === player1) game.currentPlayer = player2;
-  else game.currentPlayer = player2;
+function switchPlayer() {
+  if (game.currentPlayer === player1) {
+    game.currentPlayer = player2;
+  } else if (game.currentPlayer === player2) {
+    game.currentPlayer = player1;
+  }
+  $("#infobox button").text("Your turn "+game.currentPlayer.name);
 }
 
 function findWinner(BC1property, BC2property) {
-  if (BC1property === BC2property) return 0;    // returns 0, if equal
+  if (BC1property === BC2property) return 0; // returns 0, if equal
   else if (BC1property > BC2property) return 1; // returns 1, if Winner is Player1
   else if (BC1property < BC2property) return 2; // returns 2, if WInner is Player 2
 }
