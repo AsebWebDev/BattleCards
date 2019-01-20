@@ -10,6 +10,7 @@ let cardStack = $("#card-stack");
 let game = new Game(cardsArray); //array comes from Character.js
 let player1 = new Player("Player 1");
 let player2 = new Player("Player 2");
+let maxCards = 6;
 
 printCharacters(); // to console, just for Dev
 fillCardStack();
@@ -40,26 +41,51 @@ $("#p2-name").click(function(){
 
 function startPhase1() {
   game.currentPhase = 1;
+  
   $("#infobox button").text("Your turn "+game.currentPlayer.name);
 
   // Click Listener Cardstack
-  $("#card-stack .bc").click(function () {
+  $("#card-stack .bc").on("click", function () {
     clickedCard = $(this).attr("name");
+    game.currentPlayer.currentCards.push(clickedCard);
     if (game.currentPlayer === player1) {
-      player1.currentCards.push(clickedCard);
       $(".p1-cards").append(this);
-      switchPlayer();
-
     } else {
-      player2.currentCards.push(clickedCard);
       $(".p2-cards").append(this);
-      switchPlayer();
+    }
+    switchPlayer();
+
+    //check if all cards are distributed
+    if (player1.currentCards.length + player2.currentCards.length === maxCards) {
+      startPhase2();
     }
   });
-
-
 }
 
+function startPhase2() {
+  game.currentPhase = 2;
+  $(".bc").off();
+  $("#p1-stack .bc").on("click", function () {
+    clickedCard = $(this).attr("name");
+    console.log("Clicked on " + clickedCard);
+    if (game.currentPlayer === player1) {
+      $("#bf-p1").append(this);
+      let indexOfCard = player1.currentCards.indexOf(clickedCard);
+      player1.currentCards.slice(indexOfCard, 1);
+      switchPlayer();
+
+    // } else {
+    //   player2.currentCards.push(clickedCard);
+    //   $(".p2-cards").append(this);
+    //   switchPlayer();
+    }
+
+    // check if all cards are distributed
+    // if (player1.currentCards.length + player2.currentCards.length === maxCards) {
+    //   startPhase2();
+    // }
+  });
+}
 
 // F U N C T I O N S
 
@@ -79,7 +105,7 @@ function shuffle(array) {
 function fillCardStack() {
   shuffle(game.cardsArray);
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < maxCards; i++) {
     let htmlBc = "";
     htmlBc += '<div class="bc" name="' + game.cardsArray[i].name + '">';
     htmlBc += '<img src=' + game.cardsArray[i].img + '>';

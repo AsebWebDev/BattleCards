@@ -37,8 +37,8 @@ header {
 #p1-board {
   width: 20%;
   background-color: #520556;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
 }
 
 /* Card Stack  */
@@ -56,8 +56,8 @@ background-color:#ff9900;
 #p2-board {
   width: 20%;
   background-color: #520556;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 
 /* I N F O B O X  */
@@ -89,6 +89,8 @@ gameboard {
 .p-cards {
   display: flex;
   flex-direction: row;
+  /* flex-wrap: wrap; */
+
 }
 
 #p1-stack {
@@ -99,7 +101,7 @@ gameboard {
   border: 2px solid black;
   height: 400px;
   width: 60%;
-  background-color: #CA431D;
+  background-color: #520556;
 
 }
 
