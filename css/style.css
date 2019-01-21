@@ -109,14 +109,16 @@ gameboard {
   
 }
 
+/* D I C E  */
 
-/* .p-card {
-  color:white;
-  height: 160px;
-  width: 110px;
-  border: 1px solid black;
-  margin: 5px;
-} */
+dice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#dice {font-size: 6rem;}
 
 /* C A R D  */
 

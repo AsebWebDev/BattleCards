@@ -18,9 +18,15 @@ fillCardStack();
 //set Player 1 default ... TODO: dice, who is first
 game.currentPlayer = player1;
 
+// initialize Dice 
+$('#dice-button').on('click', function(){game.rollTheDice();});
+
+// Start Game Button
 $("#infobox button").click(function () {
   startPhase1();
 });
+
+// Enter names
 
 $("#p1-name").click(function(){
   let enteredName = prompt("What is your name, Player 1?");
@@ -61,6 +67,8 @@ function startPhase1() {
     }
   });
 }
+
+// F U N C T I O N S
 
 function startPhase2() {
   game.currentPhase = 2;
