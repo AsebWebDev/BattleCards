@@ -86,7 +86,7 @@ function startPhase2() {
       game.currentPlayer.currentCardInBattle = clickedCharacter;
       $("#bf-p1").append(this);
       let indexOfCard = player1.currentCards.indexOf(clickedCharacter);
-      player1.currentCards.slice(indexOfCard, 1);
+      player1.currentCards.splice(indexOfCard, 1);
       switchPlayer();
       if (player2.currentCardInBattle != null) {
         startBattle();
@@ -102,7 +102,7 @@ function startPhase2() {
       game.currentPlayer.currentCardInBattle = clickedCharacter;
       $("#bf-p2").append(this);
       let indexOfCard = player2.currentCards.indexOf(clickedCharacter);
-      player2.currentCards.slice(indexOfCard, 1);
+      player2.currentCards.splice(indexOfCard, 1);
       switchPlayer();
       if (player1.currentCardInBattle != null) {
         startBattle();
@@ -114,15 +114,38 @@ function startPhase2() {
 function startBattle() {
   game.currentPhase = 3;
   $(".bc").off();
-    console.log("BATTLE!");
-    $("#battle-field .bc p").on("click", function() {
-    let selectedProperty = $(this).prop("class");
-    if (game.currentPlayer.currentPropertyInBattle === null) {
-      console.log("You clicked " + selectedProperty + ", "+game.currentPlayer.name)
-      game.currentPlayer.currentPropertyInBattle = selectedProperty;
-    } else console.log("You already picked wisely, "+game.currentPlayer.name);
-    });
+  console.log("BATTLE!");
 
+  // Current player choses property to attack
+  $("#battle-field .bc p").on("click", function() {
+  let selectedProperty = $(this).prop("class");
+  // TODO If-Statement later really needed???
+  if (game.currentPropertyInBattle === null) {
+    console.log("You clicked " + selectedProperty + ", "+game.currentPlayer.name)
+    game.currentPropertyInBattle = selectedProperty;
+    let player1prop = player1.currentCardInBattle[game.currentPropertyInBattle];
+    let player2prop = player2.currentCardInBattle[game.currentPropertyInBattle];
+    let winner = findWinner(player1prop, player2prop);
+    calcWinner(winner);
+
+      // TODO: If statement works?
+    if (!$(".p-stack .bc")) console.log("No cards left for Battle");
+    else {
+      cleanBattlefield();
+      startBattle();
+    }
+  } else console.log("You already picked wisely, "+game.currentPlayer.name);
+  });
+}
+
+function cleanBattlefield() {
+  $("#battle-field .bc").remove();
+}
+
+function calcWinner(n){
+  if (n === 1) console.log(player1.name + " won!");
+  else if (n === 2) console.log(player2.name + " won!");
+  else console.log("Equal!");
 }
 
 function shuffle(array) {
