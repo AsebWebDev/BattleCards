@@ -15,11 +15,10 @@ class Game {
         diceCount = 2;
     for (i = 0; i < diceCount; i++) {
         faceValue = Math.floor(Math.random() * 6);
-        console.log(faceValue);
         output += "&#x268" + faceValue + "; ";
         sum += faceValue+1;
     }
-    console.log(sum);
     document.getElementById('dice').innerHTML = output;
+    return sum;
   }
 }

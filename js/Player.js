@@ -6,5 +6,6 @@ class Player {
     this.currentCards = [];
     this.score = 0;
     this.scoreArray = [];
+    this.currentDiceValue = 0;
   }
 }
