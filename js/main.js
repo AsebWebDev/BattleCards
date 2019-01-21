@@ -78,7 +78,7 @@ function dice(player) {
 function startPhase1() {
   game.currentPhase = 1;
   
-  updateBoard();
+  game.updateBoard();
 
   // Click Listener Cardstack
   $("#card-stack .bc").on("click", function () {
@@ -91,9 +91,9 @@ function startPhase1() {
     } else {
       $(".p2-cards").append(this);
     }
-    switchPlayer();
+    game.switchPlayer();
 
-    //check if all cards are distributed
+    //check if all cards from main stack are distributed
     if (player1.currentCards.length + player2.currentCards.length === maxCards) {
       startPhase2();
     }
@@ -103,7 +103,7 @@ function startPhase1() {
 function startPhase2() {
   game.currentPhase = 2;
   $(".bc").off();
-  updateBoard();
+  game.updateBoard();
   
   $("#p1-stack .bc").on("click", function () {
     let clickedCard = $(this).attr("name");
@@ -114,7 +114,7 @@ function startPhase2() {
       $("#bf-p1").append(this);
       let indexOfCard = player1.currentCards.indexOf(clickedCharacter);
       player1.currentCards.splice(indexOfCard, 1);
-      switchPlayer();
+      game.switchPlayer();
       if (player2.currentCardInBattle != null) {
         startBattle();
       }
@@ -130,7 +130,7 @@ function startPhase2() {
       $("#bf-p2").append(this);
       let indexOfCard = player2.currentCards.indexOf(clickedCharacter);
       player2.currentCards.splice(indexOfCard, 1);
-      switchPlayer();
+      game.switchPlayer();
       if (player1.currentCardInBattle != null) {
         startBattle();
       }
@@ -138,11 +138,7 @@ function startPhase2() {
   });
 }
 
-function updateBoard(){
-  $("#infobox button").text("Your turn "+game.currentPlayer.name);
-  $("#p1-score").text(player1.score);
-  $("#p2-score").text(player2.score);
-}
+
 
 function startBattle() {
   game.currentPhase = 3;
@@ -152,52 +148,23 @@ function startBattle() {
   // Current player choses property to attack
   $("#battle-field .bc p").on("click", function() {
   let selectedProperty = $(this).prop("class");
-  // TODO If-Statement later really needed???
   if (game.currentPropertyInBattle === null) {
-    console.log("You clicked " + selectedProperty + ", "+game.currentPlayer.name);
     game.currentPropertyInBattle = selectedProperty;
     let player1prop = player1.currentCardInBattle[game.currentPropertyInBattle];
-    console.log("P1-Property: "+player1prop);
     let player2prop = player2.currentCardInBattle[game.currentPropertyInBattle];
-    console.log("P2-Property: "+player2prop);    
     findWinner(player1prop, player2prop);
 
-      // TODO: If statement works?
-    cleanBattlefield();
+    game.cleanBattlefield();
     if (player1.currentCards.length === 0 && player1.currentCards.length === 0) {
-      updateBoard();
-      if (checkGameOver() === true) {
+      game.updateBoard();
+      if (game.checkGameOver() === true) {
         console.log("Gameover");
       } 
     } else startPhase2();
 
-
   } else console.log("You already picked wisely, "+game.currentPlayer.name);
   });
 }
-
-function checkGameOver() {
-  if (game.currentRound === game.roundsToPlay) {
-    let winner;
-    if (player1.score === player2.score){
-      $("#infobox button").text("Game over! Score is equal. Please choose who is best in a proper fist fight");
-    } else {
-      if (player1.score > player2.score) winner = player1;
-      else winner = player2;
-      $("#infobox button").text("Game over! The winner is " + winner.name);
-    }
-  return true;
-  } else return false;
-}
-
-function cleanBattlefield() {
-  $("#battle-field .bc").remove();
-  player1.currentCardInBattle = null;
-  player2.currentCardInBattle = null;
-  game.currentPropertyInBattle = null;
-  $("dice div").hide();
-}
-
 
 function shuffle(array) {
   var currentIndex = array.length,
@@ -229,19 +196,12 @@ function fillCardStack() {
   }
 }
 
-function switchPlayer() {
-  if (game.currentPlayer === player1) {
-    game.currentPlayer = player2;
-  } else if (game.currentPlayer === player2) {
-    game.currentPlayer = player1;
-  }
-  $("#infobox button").text("Your turn "+game.currentPlayer.name);
-}
+
 
 function findWinner(BC1property, BC2property) {
   if (BC1property === BC2property) {
     console.log("Equal!");
-    switchPlayer();
+    game.switchPlayer();
     // return 0; // returns 0, if equal
 
   } else if (BC1property > BC2property) {
