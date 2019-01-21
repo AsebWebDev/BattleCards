@@ -80,11 +80,14 @@ function startPhase2() {
     clickedCard = $(this).attr("name");
 
     if (game.currentPlayer === player1) {
+      game.currentPlayer.currentCardInBattle = clickedCard;
       $("#bf-p1").append(this);
       let indexOfCard = player1.currentCards.indexOf(clickedCard);
       player1.currentCards.slice(indexOfCard, 1);
       switchPlayer();
-
+      if (player2.currentCardInBattle != null) {
+        startBattle();
+      }
     } 
   });
 
@@ -92,17 +95,29 @@ function startPhase2() {
     clickedCard = $(this).attr("name");
 
     if (game.currentPlayer === player2) {
+      game.currentPlayer.currentCardInBattle = clickedCard;
       $("#bf-p2").append(this);
       let indexOfCard = player1.currentCards.indexOf(clickedCard);
       player2.currentCards.slice(indexOfCard, 1);
       switchPlayer();
+      if (player1.currentCardInBattle != null) {
+        startBattle();
+      } 
     } 
   });
+}
 
-    // check if all cards are distributed
-    // if (player1.currentCards.length + player2.currentCards.length === maxCards) {
-    //   startPhase2();
-    // }
+function startBattle() {
+  game.currentPhase = 3;
+  $(".bc").off();
+    console.log("BATTLE!");
+  $("#bf-p1 .bc p").on("click", function() {
+    let selectedProperty = $(this).prop("class");
+  });
+  $("#bf-p2 .bc p").on("click", function() {
+    let selectedProperty = $(this).prop("class");
+  });
+  // startPhase2();
 }
 
 function shuffle(array) {
@@ -127,10 +142,10 @@ function fillCardStack() {
     htmlBc += '<img src=' + game.cardsArray[i].img + '>';
     htmlBc += '<span>' + game.cardsArray[i].name + '</span>';
     htmlBc += '<div class="properties">';
-    htmlBc += '<p>Strength: ' + game.cardsArray[i].strength + '</p>'
-    htmlBc += '<p>Intelligence ' + game.cardsArray[i].intelligence + '</p>'
-    htmlBc += '<p>Humor: ' + game.cardsArray[i].humor + '</p>'
-    htmlBc += '<p>Cuteness: ' + game.cardsArray[i].cuteness + '</p>'
+    htmlBc += '<p class="strength">Strength: ' + game.cardsArray[i].strength + '</p>'
+    htmlBc += '<p class="intelligence">Intelligence ' + game.cardsArray[i].intelligence + '</p>'
+    htmlBc += '<p class="humor">Humor: ' + game.cardsArray[i].humor + '</p>'
+    htmlBc += '<p class="cuteness">Cuteness: ' + game.cardsArray[i].cuteness + '</p>'
     cardStack.append(htmlBc);
   }
 }

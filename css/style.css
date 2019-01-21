@@ -146,6 +146,11 @@ dice {
   background-color: #ca431d;
 }
 
+.bc p:hover {
+  font-weight: bold;
+  color: yellow;
+}
+
 .bc img {
   /* height: 8vh;
   width: 5vw; */
