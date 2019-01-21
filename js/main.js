@@ -57,8 +57,10 @@ function startPhase1() {
 
   // Click Listener Cardstack
   $("#card-stack .bc").on("click", function () {
-    clickedCard = $(this).attr("name");
-    game.currentPlayer.currentCards.push(clickedCard);
+    let clickedCard = $(this).attr("name");
+    let clickedCharacter = game.cardsArray.filter(obj => obj.name === clickedCard)[0];
+    console.log("Clicked Char " + clickedCharacter.name);
+    game.currentPlayer.currentCards.push(clickedCharacter);
     if (game.currentPlayer === player1) {
       $(".p1-cards").append(this);
     } else {
@@ -72,17 +74,18 @@ function startPhase1() {
     }
   });
 }
-
+        // TODO: Dry code?
 function startPhase2() {
   game.currentPhase = 2;
   $(".bc").off();
   $("#p1-stack .bc").on("click", function () {
-    clickedCard = $(this).attr("name");
+    let clickedCard = $(this).attr("name");
+    let clickedCharacter = game.cardsArray.filter(obj => obj.name === clickedCard)[0];
 
     if (game.currentPlayer === player1) {
-      game.currentPlayer.currentCardInBattle = clickedCard;
+      game.currentPlayer.currentCardInBattle = clickedCharacter;
       $("#bf-p1").append(this);
-      let indexOfCard = player1.currentCards.indexOf(clickedCard);
+      let indexOfCard = player1.currentCards.indexOf(clickedCharacter);
       player1.currentCards.slice(indexOfCard, 1);
       switchPlayer();
       if (player2.currentCardInBattle != null) {
@@ -92,17 +95,18 @@ function startPhase2() {
   });
 
   $("#p2-stack .bc").on("click", function () {
-    clickedCard = $(this).attr("name");
+    let clickedCard = $(this).attr("name");
+    let clickedCharacter = game.cardsArray.filter(obj => obj.name === clickedCard)[0];
 
     if (game.currentPlayer === player2) {
-      game.currentPlayer.currentCardInBattle = clickedCard;
+      game.currentPlayer.currentCardInBattle = clickedCharacter;
       $("#bf-p2").append(this);
-      let indexOfCard = player1.currentCards.indexOf(clickedCard);
+      let indexOfCard = player2.currentCards.indexOf(clickedCharacter);
       player2.currentCards.slice(indexOfCard, 1);
       switchPlayer();
       if (player1.currentCardInBattle != null) {
         startBattle();
-      } 
+      }
     } 
   });
 }
@@ -111,13 +115,14 @@ function startBattle() {
   game.currentPhase = 3;
   $(".bc").off();
     console.log("BATTLE!");
-  $("#bf-p1 .bc p").on("click", function() {
+    $("#battle-field .bc p").on("click", function() {
     let selectedProperty = $(this).prop("class");
-  });
-  $("#bf-p2 .bc p").on("click", function() {
-    let selectedProperty = $(this).prop("class");
-  });
-  // startPhase2();
+    if (game.currentPlayer.currentPropertyInBattle === null) {
+      console.log("You clicked " + selectedProperty + ", "+game.currentPlayer.name)
+      game.currentPlayer.currentPropertyInBattle = selectedProperty;
+    } else console.log("You already picked wisely, "+game.currentPlayer.name);
+    });
+
 }
 
 function shuffle(array) {
