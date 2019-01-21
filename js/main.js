@@ -78,6 +78,8 @@ function startPhase1() {
 function startPhase2() {
   game.currentPhase = 2;
   $(".bc").off();
+  $("#infobox button").text("Your turn "+game.currentPlayer.name);
+  
   $("#p1-stack .bc").on("click", function () {
     let clickedCard = $(this).attr("name");
     let clickedCharacter = game.cardsArray.filter(obj => obj.name === clickedCard)[0];
@@ -121,18 +123,19 @@ function startBattle() {
   let selectedProperty = $(this).prop("class");
   // TODO If-Statement later really needed???
   if (game.currentPropertyInBattle === null) {
-    console.log("You clicked " + selectedProperty + ", "+game.currentPlayer.name)
+    console.log("You clicked " + selectedProperty + ", "+game.currentPlayer.name);
     game.currentPropertyInBattle = selectedProperty;
     let player1prop = player1.currentCardInBattle[game.currentPropertyInBattle];
+    console.log("P1-Property: "+player1prop);
     let player2prop = player2.currentCardInBattle[game.currentPropertyInBattle];
-    let winner = findWinner(player1prop, player2prop);
-    calcWinner(winner);
-
+    console.log("P2-Property: "+player2prop);    
+    findWinner(player1prop, player2prop);
+    
       // TODO: If statement works?
     if (!$(".p-stack .bc")) console.log("No cards left for Battle");
     else {
       cleanBattlefield();
-      startBattle();
+      startPhase2();
     }
   } else console.log("You already picked wisely, "+game.currentPlayer.name);
   });
@@ -140,13 +143,11 @@ function startBattle() {
 
 function cleanBattlefield() {
   $("#battle-field .bc").remove();
+  player1.currentCardInBattle = null;
+  player2.currentCardInBattle = null;
+  game.currentPropertyInBattle = null;
 }
 
-function calcWinner(n){
-  if (n === 1) console.log(player1.name + " won!");
-  else if (n === 2) console.log(player2.name + " won!");
-  else console.log("Equal!");
-}
 
 function shuffle(array) {
   var currentIndex = array.length,
@@ -188,7 +189,19 @@ function switchPlayer() {
 }
 
 function findWinner(BC1property, BC2property) {
-  if (BC1property === BC2property) return 0; // returns 0, if equal
-  else if (BC1property > BC2property) return 1; // returns 1, if Winner is Player1
-  else if (BC1property < BC2property) return 2; // returns 2, if WInner is Player 2
+  if (BC1property === BC2property) {
+    console.log("Equal!");
+    switchPlayer();
+    return 0; // returns 0, if equal
+
+  } else if (BC1property > BC2property) {
+    console.log(player1.name + " won!");
+    game.currentPlayer = player1;
+    return 1; // returns 1, if Winner is Player1
+
+  } else if (BC1property < BC2property) {
+    console.log(player2.name + " won!");
+    game.currentPlayer = player2;
+    return 2; // returns 2, if WInner is Player 2
+  }
 }
