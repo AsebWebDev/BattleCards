@@ -6,6 +6,8 @@ class Game {
     this.currentPlayer = {};
     this.currentPropertyInBattle = null;
     this.currentPhase = 0;
+    this.currentRound = 1;
+    this.roundsToPlay = 1;
   }
 
   rollTheDice() {

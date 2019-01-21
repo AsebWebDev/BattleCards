@@ -15,15 +15,40 @@
   printCharacters(); // to console, just for Dev
   fillCardStack();
 
-//set Player 1 default ... TODO: dice, who is first
+  //First set Player1 default, after clicking Start,
+  //the users will dice who is first
   game.currentPlayer = player1;
 
-// Start Game Button
-  $("#infobox button").click(function () {
-   startPhase1();
+  // A click event is set for the game to start. 
+  // After starting users will be asked how many rounds they want to play,
+  // and dice who is first.
+
+  $("#infobox button").on("click", function () {
+    // TODO: get info with input field
+ 
+    game.roundsToPlay = Number(prompt("How many round would you like to play?"));
+    $("#infobox button").off();
+  
+    // Dice, who starts first
+    $("#infobox button").text("Please Dice, "+player1.name);
+    $("dice div").show();
+    $('#dice-button').on('click', function(){
+      player1.currentDiceValue = game.rollTheDice();
+      $("#infobox button").text("Please Dice, "+player2.name);   
+      $('#dice-button').off();
+      $('#dice-button').on('click', function(){
+        if (game.rollTheDice() > player1.currentDiceValue) game.currentPlayer = player2;      
+        player1.currentDiceValue = 0;
+        $('#dice-button').off().hide();
+        setTimeout(() => {
+          $("dice div").hide();
+        },2000);
+        startPhase1();
+      });
+    });
   });
 
-// Enter names
+// Enter names Click Event
   $("#p1-name").click(function(){
     let enteredName = prompt("What is your name, Player 1?");
     if (enteredName != null) {
@@ -42,18 +67,18 @@
 
 // ###### F U N C T I O N S ######
 
-function Dice() {
+function dice(player) {
   $("dice div").show();
   $('#dice-button').on('click', function(){
-    game.currentPlayer.currentDiceValue = game.rollTheDice();
-    $('#dice-button').off();
+    player.currentDiceValue = game.rollTheDice();
+    // return game.rollTheDice();
   });
 }
 
 function startPhase1() {
   game.currentPhase = 1;
   
-  $("#infobox button").text("Your turn "+game.currentPlayer.name);
+  updateBoard();
 
   // Click Listener Cardstack
   $("#card-stack .bc").on("click", function () {
@@ -78,7 +103,7 @@ function startPhase1() {
 function startPhase2() {
   game.currentPhase = 2;
   $(".bc").off();
-  $("#infobox button").text("Your turn "+game.currentPlayer.name);
+  updateBoard();
   
   $("#p1-stack .bc").on("click", function () {
     let clickedCard = $(this).attr("name");
@@ -113,6 +138,12 @@ function startPhase2() {
   });
 }
 
+function updateBoard(){
+  $("#infobox button").text("Your turn "+game.currentPlayer.name);
+  $("#p1-score").text(player1.score);
+  $("#p2-score").text(player2.score);
+}
+
 function startBattle() {
   game.currentPhase = 3;
   $(".bc").off();
@@ -130,15 +161,33 @@ function startBattle() {
     let player2prop = player2.currentCardInBattle[game.currentPropertyInBattle];
     console.log("P2-Property: "+player2prop);    
     findWinner(player1prop, player2prop);
-    
+
       // TODO: If statement works?
-    if (!$(".p-stack .bc")) console.log("No cards left for Battle");
-    else {
-      cleanBattlefield();
-      startPhase2();
-    }
+    cleanBattlefield();
+    if (player1.currentCards.length === 0 && player1.currentCards.length === 0) {
+      updateBoard();
+      if (checkGameOver() === true) {
+        console.log("Gameover");
+      } 
+    } else startPhase2();
+
+
   } else console.log("You already picked wisely, "+game.currentPlayer.name);
   });
+}
+
+function checkGameOver() {
+  if (game.currentRound === game.roundsToPlay) {
+    let winner;
+    if (player1.score === player2.score){
+      $("#infobox button").text("Game over! Score is equal. Please choose who is best in a proper fist fight");
+    } else {
+      if (player1.score > player2.score) winner = player1;
+      else winner = player2;
+      $("#infobox button").text("Game over! The winner is " + winner.name);
+    }
+  return true;
+  } else return false;
 }
 
 function cleanBattlefield() {
@@ -146,6 +195,7 @@ function cleanBattlefield() {
   player1.currentCardInBattle = null;
   player2.currentCardInBattle = null;
   game.currentPropertyInBattle = null;
+  $("dice div").hide();
 }
 
 
@@ -192,16 +242,17 @@ function findWinner(BC1property, BC2property) {
   if (BC1property === BC2property) {
     console.log("Equal!");
     switchPlayer();
-    return 0; // returns 0, if equal
+    // return 0; // returns 0, if equal
 
   } else if (BC1property > BC2property) {
     console.log(player1.name + " won!");
     game.currentPlayer = player1;
-    return 1; // returns 1, if Winner is Player1
+    // return 1; // returns 1, if Winner is Player1
 
   } else if (BC1property < BC2property) {
     console.log(player2.name + " won!");
     game.currentPlayer = player2;
-    return 2; // returns 2, if WInner is Player 2
+    // return 2; // returns 2, if WInner is Player 2
   }
+  game.currentPlayer.score += BC1property + BC2property;
 }
