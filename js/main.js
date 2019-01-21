@@ -1,6 +1,15 @@
 /*jshint esversion: 6 */
+
 // T O D O
-// - @media?
+// - @media? to make site fully responsive on small screens
+// create Readme
+// add responsive clicks
+// add grow of card on click and on battlefiekd
+// add Backgrounds
+// choose another color palette
+// add sounds & backgroudn music?
+// add an extra InfoBoard for live game instructions.
+// find a better Font
 
 // G E T   D O M 
   let cardStack = $("#card-stack");
