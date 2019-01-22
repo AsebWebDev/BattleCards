@@ -50,6 +50,7 @@ header {
 
 #card-stack {
 width: 60%;
+height: 160px;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
