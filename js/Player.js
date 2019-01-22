@@ -7,6 +7,6 @@ class Player {
     this.currentCardInBattle = null;
     this.score = 0;
     this.scoreArray = [];
-    this.currentDiceValue = 0;
+    this.currentDiceValue = null;
   }
 }

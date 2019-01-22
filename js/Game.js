@@ -43,6 +43,8 @@ class Game {
     $("#battle-field .bc").remove();
     player1.currentCardInBattle = null;
     player2.currentCardInBattle = null;
+    player1.currentDiceValue = null;
+    player2.currentDiceValue = null;
     game.currentPropertyInBattle = null;
     $("dice div").hide();
   }
