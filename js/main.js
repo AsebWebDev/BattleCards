@@ -32,28 +32,48 @@ game.currentPlayer = player1;
 // After starting users will be asked how many rounds they want to play,
 // and dice who is first.
 
-$("#infobox button").on("click", function () {
+$("#infobox-button").on("click", function () {
   // TODO: get info with input field
 
   game.roundsToPlay = Number(prompt("How many round would you like to play?"));
-  $("#infobox button").off();
+  $("#infobox-button").off();
 
   // Dice, who starts first
-  $("#infobox button").text("Please Dice, " + player1.name);
+  $("#instr").text("Every player dices once to see who starts.");
+  $("#story-title").text("Let's see who can pick the first card...");
+
+  $("#infobox-button").text("Click to Dice, " + player1.name);
   $("dice div").show();
 
-  $('#dice-button').on('click', function () {
+  $('#infobox-button').on('click', function () {
     player1.currentDiceValue = game.rollTheDice();
-    $("#infobox button").text("Please Dice, " + player2.name);
-    $('#dice-button').off();
-    $('#dice-button').on('click', function () {
-      if (game.rollTheDice() > player1.currentDiceValue) game.currentPlayer = player2;
-      player1.currentDiceValue = 0;
-      $('#dice-button').off();
+    $("#story").text(player1.name + " diced a " + player1.currentDiceValue);
+    setTimeout(() => {
+      $("#dice").text("");
+    }, 1000);
+    $("#infobox-button").text("Click to Dice, " + player2.name);
+    $('#infobox-button').off();
+    $('#infobox-button').on('click', function () {
+      player2.currentDiceValue = game.rollTheDice();
+    $("#story").text(player2.name + " diced " + player1.currentDiceValue);
+      if (player2.currentDiceValue > player1.currentDiceValue) {
+        game.currentPlayer = player2;
+        $("#p2-board").addClass("selected");
+      } else $("#p1-board").addClass("selected");
+      $("#story").text(player2.name + " diced " + player2.currentDiceValue);
+
+      // setTimeout(() => {
+      //   $("#dice").text("");
+      // }, 1000);
+
+      $('#infobox-button').off();
       setTimeout(() => {
+        player1.currentDiceValue = 0;
+        player2.currentDiceValue = 0;
+        $("#story").text("");
         $("#dice").text("");
-        $("dice div").hide();
-        // $("dice").hide();
+        $("dice div").hide();    
+        $("#story-title").text(game.currentPlayer.name + " starts!");
       }, 2000);
       startPhase1();
     });
@@ -81,7 +101,7 @@ $("#p2-name").click(function () {
 
 function dice(player) {
   $("dice div").show();
-  $('#dice-button').on('click', function () {
+  $('#infobox-button').on('click', function () {
     player.currentDiceValue = game.rollTheDice();
   });
 }
@@ -170,29 +190,27 @@ function startBattle() {
     let player1prop = player1.currentCardInBattle[game.currentPropertyInBattle];
     let player2prop = player2.currentCardInBattle[game.currentPropertyInBattle];
 
-    $("#infobox button").text("Please Dice, " + game.currentPlayer.name);
+    $("#infobox-button").text("Click to Dice, " + game.currentPlayer.name);
     $("dice div").show();
-    $('#dice-button').on('click', function () {
-      game.currentPlayer.currentDiceValue = game.rollTheDice();
-      setTimeout(() => {
-        $("#dice").text("");
-      }, 1200);
-      game.switchPlayer();
-      $("#infobox button").text("Please Dice, " + game.currentPlayer.name);
-      $('#dice-button').on('click', function () {
-        game.currentPlayer.currentDiceValue = game.rollTheDice();
+    $('#infobox-button').on('click', function () {
+      
+      game.diceCurrentPlayer();      
+      $("#infobox-button").text("Click to Dice, " + game.currentPlayer.name);
+      $('#infobox-button').on('click', function () {
+        
+        game.diceCurrentPlayer();
         game.switchPlayer();
-        $('#dice-button').off();
+        $('#infobox-button').off();
         setTimeout(() => {
           $("dice div").hide();
         }, 2000);
 
-        let player1Total = player1prop * player1.currentDiceValue;
-        let player2Total = player2prop * player2.currentDiceValue;
+        let player1Total = player1prop + player1.currentDiceValue;
+        let player2Total = player2prop + player2.currentDiceValue;
 
         console.log("Player 1: " + player1prop + "*" + player1.currentDiceValue + " = " + player1Total);
         console.log("Player 2: " + player2prop + "*" + player2.currentDiceValue + " = " + player2Total);
-        findWinner(player1Total, player2Total);
+        game.findWinner(player1Total, player2Total);
         game.cleanBattlefield();
 
         // check if cards left, game is over or another round to play
@@ -243,19 +261,3 @@ function fillCardStack() {
 
 
 
-function findWinner(BC1property, BC2property) {
-  if (BC1property === BC2property) {
-    console.log("Equal!");
-    game.switchPlayer();
-
-  } else if (BC1property > BC2property) {
-      console.log(player1.name + " won!");
-      game.currentPlayer = player1;
-
-  } else if (BC1property < BC2property) {
-      console.log(player2.name + " won!");
-      game.currentPlayer = player2;
-  }
-  player1.score += BC1property;
-  player2.score += BC2property;
-}

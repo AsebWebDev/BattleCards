@@ -25,6 +25,14 @@ class Game {
     return sum;
   }
 
+  diceCurrentPlayer() {
+    game.currentPlayer.currentDiceValue = game.rollTheDice();
+    setTimeout(() => {
+      $("#dice").text("");
+    }, 1200);
+    game.switchPlayer();
+  }
+
   checkGameOver() {
     if (game.currentRound === game.roundsToPlay) {
       let winner;
@@ -55,6 +63,8 @@ class Game {
     } else if (game.currentPlayer === player2) {
       game.currentPlayer = player1;
     }
+    $("#p1-board").toggleClass("selected");
+    $("#p2-board").toggleClass("selected");
     $("#infobox button").text("Your turn "+game.currentPlayer.name);
   }
 
@@ -62,5 +72,22 @@ class Game {
     $("#infobox button").text("Your turn "+game.currentPlayer.name);
     $("#p1-score").text(player1.score);
     $("#p2-score").text(player2.score);
+  }
+
+  findWinner(BC1property, BC2property) {
+    if (BC1property === BC2property) {
+      console.log("Equal!");
+      game.switchPlayer();
+  
+    } else if (BC1property > BC2property) {
+        console.log(player1.name + " won!");
+        game.currentPlayer = player1;
+  
+    } else if (BC1property < BC2property) {
+        console.log(player2.name + " won!");
+        game.currentPlayer = player2;
+    }
+    player1.score += BC1property;
+    player2.score += BC2property;
   }
 }

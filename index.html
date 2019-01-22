@@ -30,8 +30,8 @@
   </header>
 
   <div id="infobox">
-      <div class="ui inverted segment">
-          <button  class="ui large inverted olive button">START GAME</button>
+      <div id="infobox-button-div" class="ui inverted segment">
+          <button id="infobox-button" class="ui large inverted olive button">START GAME</button>
       </div>
   </div>
 
@@ -43,6 +43,9 @@
     </div>
     <div id="battle-field">
       <div id="bf-p1"></div>
+      <dice>
+        <div id="dice" hidden></div>
+      </dice>
       <div id="bf-p2"></div>
     </div>
     <div class="p-stack" id="p2-stack">
@@ -52,13 +55,16 @@
     </div>    
   </gameboard>
 
-  <!-- <input type="button" value="Roll"> -->
-  <dice>
-    <div class="ui inverted segment" hidden>
-      <button id="dice-button" class="ui large inverted olive button">Roll the Dice</button>
+  <footer>
+    <div class="instructions-div">
+      <h3>INSTRUCTIONS</h3>
+      <p id="instr">You are not anonymous. Change your name and click START to begin the game.</p>
     </div>
-    <div id="dice" hidden></div>
-  </dice>
+    <div class="story-div">
+      <h3 id="story-title"></h3>
+      <p id="story"></p>
+    </div>
+  </footer>
   
 
   <script
