@@ -190,6 +190,8 @@ function startBattle() {
         let player1Total = player1prop * player1.currentDiceValue;
         let player2Total = player2prop * player2.currentDiceValue;
 
+        console.log("Player 1: " + player1prop + "*" + player1.currentDiceValue + " = " + player1Total);
+        console.log("Player 2: " + player2prop + "*" + player2.currentDiceValue + " = " + player2Total);
         findWinner(player1Total, player2Total);
         game.cleanBattlefield();
 
@@ -245,17 +247,15 @@ function findWinner(BC1property, BC2property) {
   if (BC1property === BC2property) {
     console.log("Equal!");
     game.switchPlayer();
-    // return 0; // returns 0, if equal
 
   } else if (BC1property > BC2property) {
-    console.log(player1.name + " won!");
-    game.currentPlayer = player1;
-    // return 1; // returns 1, if Winner is Player1
+      console.log(player1.name + " won!");
+      game.currentPlayer = player1;
 
   } else if (BC1property < BC2property) {
-    console.log(player2.name + " won!");
-    game.currentPlayer = player2;
-    // return 2; // returns 2, if WInner is Player 2
+      console.log(player2.name + " won!");
+      game.currentPlayer = player2;
   }
-  game.currentPlayer.score += BC1property + BC2property;
+  player1.score += BC1property;
+  player2.score += BC2property;
 }
