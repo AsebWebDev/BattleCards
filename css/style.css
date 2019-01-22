@@ -41,10 +41,10 @@ header {
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
 }
-/* 
+
 .selected {
   border: 10px solid green;
-} */
+} 
 
 /* Card Stack  */
 
@@ -124,7 +124,7 @@ gameboard {
   justify-content: space-between;
   align-items: center;
   margin-top: 30px;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 #bf-p2{

@@ -51,7 +51,7 @@ class Game {
     $("#instr").text("Every player dices once to see who starts.");
     $("#story-title").text("Let's see who can pick the first card...");
 
-    $("#infobox-button").text("Click to Dice, " + player1.name);
+    $("#infobox-button").text("Click to Dice, " + game.currentPlayer.name);
     $("dice div").show();
 
     //clicked on dice
@@ -61,7 +61,7 @@ class Game {
       setTimeout(() => {
         $("#dice").text("");
       }, 1000);
-      $("#infobox-button").text("Click to Dice, " + player2.name);
+      $("#infobox-button").text("Click to Dice, " + game.currentPlayer.name);
       $('#infobox-button').off();
       $('#infobox-button').on('click', function () {
         player2.currentDiceValue = game.rollTheDice();
@@ -200,24 +200,30 @@ class Game {
    
       $("#infobox-button").text("Click to Dice, " + game.currentPlayer.name);
       $("dice div").show();
-      $('#infobox-button').on('click', function () {
-        
+      $('#infobox-button').on('click', function (event) {
+        // event.stopImmediatePropagation();    
+        game.setClasses();    
         game.diceCurrentPlayer();  
         game.switchPlayer();    
         $("#infobox-button").text("Click to Dice, " + game.currentPlayer.name);
         $("#story-title").text("Get lucky, "+game.currentPlayer.name+"! Dice to increase your attack!");
-        
-        $('#infobox-button').on('click', function () {
-          
+        $('#infobox-button').off();
+        $('#infobox-button').on('click', function (event) {
+          event.stopImmediatePropagation();
+          game.setClasses();    
           game.diceCurrentPlayer();
           game.switchPlayer();
           $('#infobox-button').off();
           // setTimeout(() => {
           //   $("dice div").hide();
           // }, 2000);
-  
+          console.log("Player1prop: "+player1prop);
+          console.log("Player2prop: "+player2prop);
           let player1Total = player1prop + player1.currentDiceValue;
           let player2Total = player2prop + player2.currentDiceValue;
+          console.log("Player1 Total: " + player1Total);
+          console.log("Player2 Total: " + player2Total);
+          
           $("#story-title").text("Wow, what a fight! Here yo go:");
           $("#story").text(player1.name + ": "+player1Total+" VS. "+player2.name+": "+player2Total);
   
@@ -232,7 +238,7 @@ class Game {
               console.log("Gameover");
             } else {
               game.currentRound++;
-              // game.fillCardStack();
+              game.fillCardStack();
               game.startPhase1();
             }
           } else game.startPhase2();
@@ -258,10 +264,10 @@ class Game {
 
   diceCurrentPlayer() {
     game.currentPlayer.currentDiceValue = game.rollTheDice();
+    console.log(game.currentPlayer.name+" diced with result "+game.currentPlayer.currentDiceValue);
     setTimeout(() => {
       $("#dice").text("");
     }, 1200);
-    // game.switchPlayer();
   }
 
   checkGameOver() {
@@ -300,16 +306,16 @@ class Game {
     $("dice div").hide();
   }
 
-  // setClasses(){
-  //   $("#p1-board").removeClass("selected");
-  //   $("#p2-board").removeClass("selected");
-  //   if (game.currentPlayer === player1) {
-  //     $("#p1-board").addClass("selected");
-  //   }
-  //   if (game.currentPlayer === player2) {
-  //     $("#p2-board").addClass("selected");
-  //   }
-  // }
+  setClasses(){
+    $("#p1-board").removeClass("selected");
+    $("#p2-board").removeClass("selected");
+    if (game.currentPlayer === player1) {
+      $("#p1-board").addClass("selected");
+    }
+    if (game.currentPlayer === player2) {
+      $("#p2-board").addClass("selected");
+    }
+  }
 
   switchPlayer() {
     let cp = game.currentPlayer.name;
@@ -322,7 +328,7 @@ class Game {
     } else if (cp == p2) {
       game.currentPlayer = player1;
     }
-    // game.setClasses();
+    game.setClasses();
     $("#infobox button").text("Your turn "+game.currentPlayer.name);
   }
 
@@ -330,6 +336,7 @@ class Game {
     $("#infobox button").text("Your turn "+game.currentPlayer.name);
     $("#p1-score").text(player1.score);
     $("#p2-score").text(player2.score);
+    game.setClasses();
   }
 
   findWinner(BC1property, BC2property) {
