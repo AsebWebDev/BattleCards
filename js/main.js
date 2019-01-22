@@ -52,14 +52,3 @@ $("#p2-name").click(function () {
     $("#p2-name span").text(player2.name);
   }
 });
-
-// ###### F U N C T I O N S ######
-
-
-
-
-
-
-
-
-
