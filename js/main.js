@@ -22,7 +22,7 @@ let player2 = new Player("Player 2");
 let maxCards = 6;
 
 printCharacters(); // to console, just for Dev
-fillCardStack();
+
 
 //First set Player1 default, after clicking Start,
 //the users will dice who is first
@@ -73,8 +73,8 @@ $("#infobox-button").on("click", function () {
         $("#story").text("");
         $("#dice").text("");
         $("dice div").hide();    
-        $("#story-title").text(game.currentPlayer.name + " starts!");
       }, 2000);
+      $("#story-title").text(game.currentPlayer.name + " starts!");
       startPhase1();
     });
   });
@@ -99,25 +99,37 @@ $("#p2-name").click(function () {
 
 // ###### F U N C T I O N S ######
 
-function dice(player) {
-  $("dice div").show();
-  $('#infobox-button').on('click', function () {
-    player.currentDiceValue = game.rollTheDice();
-  });
-}
+// REMOVE THIS 
+// function dice(player) {
+//   $("dice div").show();
+//   $('#infobox-button').on('click', function () {
+//     player.currentDiceValue = game.rollTheDice();
+//   });
+// }
 
 // Phase 1: Player pick their cards from main stack.
 //          When done, Phase 2
 function startPhase1() {
+  game.fillCardStack();
   game.currentPhase = 1;
   game.updateBoard();
+
+  $("#instr").text("Pick a card to build your personal army. When each player has got 3 soldiers, you are prepared for battle!");
+  $("#story-title").text("Which warrior should be part of your army?");
+
 
   // Click Listener Cardstack
   $("#card-stack .bc").on("click", function () {
     let clickedCard = $(this).attr("name");
+    
+    $("#story").text(game.currentPlayer.name + " picked " + clickedCard + "! Beware!!!");
+    setTimeout(() => {
+      $("#story").text("");
+    },1500);
     let clickedCharacter = game.cardsArray.filter(obj => obj.name === clickedCard)[0];
-    console.log("Clicked Char " + clickedCharacter.name);
+
     game.currentPlayer.currentCards.push(clickedCharacter);
+
     if (game.currentPlayer === player1) {
       $(".p1-cards").append(this);
     } else {
@@ -132,7 +144,6 @@ function startPhase1() {
   });
 }
 
-// TODO: Dry code?
 // Phase 2: Each Player picks a card for upcoming battle
 //          When done, Battle starts
 function startPhase2() {
@@ -140,11 +151,15 @@ function startPhase2() {
   $(".bc").off();
   game.updateBoard();
 
+  $("#instr").text("Each player needs to pick ONE card for the upcoming battle.");
+  $("#story-title").text("Get ready for battle! Chose your hero...");
+
   $("#p1-stack .bc").on("click", function () {
     let clickedCard = $(this).attr("name");
     let clickedCharacter = game.cardsArray.filter(obj => obj.name === clickedCard)[0];
 
     if (game.currentPlayer === player1) {
+      $("#story").text(game.currentPlayer.name + " sent " + clickedCard + " to the Battlefield!");
       game.currentPlayer.currentCardInBattle = clickedCharacter;
       $("#bf-p1").append(this);
       let indexOfCard = player1.currentCards.indexOf(clickedCharacter);
@@ -161,6 +176,7 @@ function startPhase2() {
     let clickedCharacter = game.cardsArray.filter(obj => obj.name === clickedCard)[0];
 
     if (game.currentPlayer === player2) {
+      $("#story").text(game.currentPlayer.name + " sent " + clickedCard + " to the Battlefield!");
       game.currentPlayer.currentCardInBattle = clickedCharacter;
       $("#bf-p2").append(this);
       let indexOfCard = player2.currentCards.indexOf(clickedCharacter);
@@ -181,21 +197,33 @@ function startPhase2() {
 function startBattle() {
   game.currentPhase = 3;
   $(".bc").off();
-  console.log("BATTLE!");
+  setTimeout(() => {
+    $("#story").text("");
+  },1500);
+  $("#instr").text(game.currentPlayer.name + " needs to pick a character trait to attack with. Click on the character trait of choice on your card.");
+  $("#story-title").text("How do you want to attack your oponent?");
+  
 
   // Current player choses property to attack
   $("#battle-field .bc p").on("click", function () {
     let selectedProperty = $(this).prop("class");
     game.currentPropertyInBattle = selectedProperty;
+    $("#story").text(game.currentPlayer.name+" attacks with "+game.currentPropertyInBattle+"!");
+    
     let player1prop = player1.currentCardInBattle[game.currentPropertyInBattle];
     let player2prop = player2.currentCardInBattle[game.currentPropertyInBattle];
 
+    $("#instr").text("Each player needs to dice to add diced number to the current value of "+game.currentPropertyInBattle+".");
+    $("#story-title").text("Get lucky, "+game.currentPlayer.name+"! Dice to increase your attack!");
+ 
     $("#infobox-button").text("Click to Dice, " + game.currentPlayer.name);
     $("dice div").show();
     $('#infobox-button').on('click', function () {
       
       game.diceCurrentPlayer();      
       $("#infobox-button").text("Click to Dice, " + game.currentPlayer.name);
+      $("#story-title").text("Get lucky, "+game.currentPlayer.name+"! Dice to increase your attack!");
+      
       $('#infobox-button').on('click', function () {
         
         game.diceCurrentPlayer();
@@ -207,9 +235,13 @@ function startBattle() {
 
         let player1Total = player1prop + player1.currentDiceValue;
         let player2Total = player2prop + player2.currentDiceValue;
+        $("#story-title").text("Wow, what a fight! Here yo go:");
+        $("#story").text(player1.name + ": "+player1Total+" VS. "+player2.name+": "+player2Total);
+        
+        setTimeout(() => {
+          $("#story").text("");
+        },2500);
 
-        console.log("Player 1: " + player1prop + "*" + player1.currentDiceValue + " = " + player1Total);
-        console.log("Player 2: " + player2prop + "*" + player2.currentDiceValue + " = " + player2Total);
         game.findWinner(player1Total, player2Total);
         game.cleanBattlefield();
 
@@ -240,23 +272,6 @@ function shuffle(array) {
     array[randomIndex] = temporaryValue;
   }
   return array;
-}
-
-function fillCardStack() {
-  shuffle(game.cardsArray);
-
-  for (let i = 0; i < maxCards; i++) {
-    let htmlBc = "";
-    htmlBc += '<div class="bc" name="' + game.cardsArray[i].name + '">';
-    htmlBc += '<img src=' + game.cardsArray[i].img + '>';
-    htmlBc += '<span>' + game.cardsArray[i].name + '</span>';
-    htmlBc += '<div class="properties">';
-    htmlBc += '<p class="strength">Strength: ' + game.cardsArray[i].strength + '</p>'
-    htmlBc += '<p class="intelligence">Intelligence ' + game.cardsArray[i].intelligence + '</p>'
-    htmlBc += '<p class="humor">Humor: ' + game.cardsArray[i].humor + '</p>'
-    htmlBc += '<p class="cuteness">Cuteness: ' + game.cardsArray[i].cuteness + '</p>'
-    cardStack.append(htmlBc);
-  }
 }
 
 

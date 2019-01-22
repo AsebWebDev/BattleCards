@@ -10,6 +10,24 @@ class Game {
     this.roundsToPlay = 1;
   }
 
+  fillCardStack() {
+    shuffle(game.cardsArray);
+  
+    for (let i = 0; i < maxCards; i++) {
+      let htmlBc = "";
+      htmlBc += '<div class="bc" name="' + game.cardsArray[i].name + '">';
+      htmlBc += '<img src=' + game.cardsArray[i].img + '>';
+      htmlBc += '<span>' + game.cardsArray[i].name + '</span>';
+      htmlBc += '<div class="properties">';
+      htmlBc += '<p class="strength">Strength: ' + game.cardsArray[i].strength + '</p>'
+      htmlBc += '<p class="intelligence">Intelligence ' + game.cardsArray[i].intelligence + '</p>'
+      htmlBc += '<p class="humor">Humor: ' + game.cardsArray[i].humor + '</p>'
+      htmlBc += '<p class="cuteness">Cuteness: ' + game.cardsArray[i].cuteness + '</p>'
+      cardStack.append(htmlBc);
+    }
+  }
+  
+
   rollTheDice() {
     let i,
         faceValue,
