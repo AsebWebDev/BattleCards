@@ -21,8 +21,19 @@ let imgDumbZombie = "../img/assets-2029818_960_720.png";
 let imgCuteMonster = "../img/cuteMonster.jpg";
 let imgStrongWarrior = "../img/strongWarrior.jpg";
 let imgBlooper = "/img/Blooper_MK7.png";
+let imgCrazyCat = "/img/cat.gif";
 
 // Characters
+
+let crazyCat = new Character(
+  "Crazy Cat", // Name
+  imgCrazyCat, // Image
+  3, // Strength
+  7, // Intelligence
+  3, // Humor
+  5 // Cuteness
+);
+
 let blooper = new Character(
   "Blooper", // Name
   imgBlooper, // Image
@@ -93,5 +104,6 @@ let cardsDatabase = [
   dumbZombie,
   nonBinary,
   pinkKirby,
-  blooper
+  blooper,
+  crazyCat
 ];

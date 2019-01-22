@@ -10,6 +10,8 @@
 // add sounds & backgroudn music?
 // add an extra InfoBoard for live game instructions.
 // find a better Font
+  // event.preventDefault() überall hinzufügen
+  // 
 
 // G E T   D O M 
 
