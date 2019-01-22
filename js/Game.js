@@ -24,8 +24,9 @@ class Game {
   }
 
   fillCardStack() {
+    // game.cardsArray = cardsDatabase;
     game.shuffle(game.cardsArray);
-  
+    let cardStack = $("#card-stack");
     for (let i = 0; i < maxCards; i++) {
       let htmlBc = "";
       htmlBc += '<div class="bc" name="' + game.cardsArray[i].name + '">';
@@ -145,12 +146,12 @@ class Game {
           // check if cards left, game is over or another round to play
           if (player1.currentCards.length === 0 && player1.currentCards.length === 0) {
             game.updateBoard();
+            // check if its game over, else start another round
             if (game.checkGameOver() === true) {
               console.log("Gameover");
             } else {
               game.currentRound++;
-              game.cardsArray = cardsArray;
-              game.fillCardStack();
+              // game.fillCardStack();
               game.startPhase1();
             }
           } else game.startPhase2();

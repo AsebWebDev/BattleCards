@@ -86,7 +86,7 @@ let strongWarrior = new Character(
   1 // Cuteness
 );
 
-let cardsArray = [
+let cardsDatabase = [
   cuteMonster,
   strongWarrior,
   linkHero,

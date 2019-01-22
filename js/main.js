@@ -12,11 +12,11 @@
 // find a better Font
 
 // G E T   D O M 
-let cardStack = $("#card-stack");
+
 
 // G A M E    I N I T
 
-let game = new Game(cardsArray); //array comes from Character.js
+let game = new Game(cardsDatabase); //array comes from Character.js
 let player1 = new Player("Player 1");
 let player2 = new Player("Player 2");
 let maxCards = 6;
