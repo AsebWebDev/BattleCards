@@ -42,7 +42,7 @@ em {
   width: 20%;
   background-color: #520556;
   border-radius: 50px 5px 5px 50px;
-  background-image: url("/img/space-left.jpg");
+  background-image: url("img/space-left.jpg");
 }
 
 .selected {
@@ -69,7 +69,7 @@ background: linear-gradient(to top, #448ef6, #00204a);
   width: 20%;
   background-color: #520556;
   border-radius: 5px 50px 50px 5px;
-  background-image: url("/img/space-right.jpg");
+  background-image: url("img/space-right.jpg");
 }
 
 /* I N F O B O X  */
@@ -120,7 +120,7 @@ gameboard {
 }
 
 #battle-field {
-  border: 2px solid black;
+  border: 1px solid black;
   height: 300px;
   width: 60%;
   background-color: #520556;
@@ -129,7 +129,7 @@ gameboard {
   justify-content: space-between;
   align-items: center;
   margin-top: 30px;
-  border-radius: 6px;
+  border-radius: 10px;
 }
 
 #battle-field .bc p:hover {
