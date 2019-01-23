@@ -3,10 +3,7 @@
 // T O D O
 // - @media? to make site fully responsive on small screens
 // create Readme
-// add responsive clicks
-// add grow of card on click and on battlefiekd
 // add Backgrounds
-// choose another color palette
 // add sounds & backgroudn music?
 // add an extra InfoBoard for live game instructions.
 // find a better Font
@@ -28,6 +25,8 @@ let sndStartBattle = $("#snd-startBattle")[0];
   sndStartBattle.load();
 let sndDice = $("#snd-dice")[0];
   sndDice.load();
+let sndBgMusic = $("#bg-music")[0];
+  sndBgMusic.load();
 
 printCharacters(); // to console, just for Dev
 
@@ -58,6 +57,23 @@ $("#p2-name").click(function () {
   if (enteredName != null) {
     player2.name = enteredName;
     $("#p2-name span").text(player2.name);
+  }
+});
+
+// Turn sound off/on button click event
+
+$("#sound-button").on("click", function () {
+  console.log("Sound Button clicked");
+  event.preventDefault();
+
+  if ($(this).text() === "Sound OFF") {
+    console.log("Sound stop");
+    sndBgMusic.pause();
+    $(this).text("Sound ON");
+  } else if ($(this).text() === "Sound ON") {
+    sndBgMusic.play();
+    $(this).text("Sound OFF");
+    console.log("Sound play");
   }
 });
 

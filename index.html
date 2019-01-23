@@ -61,16 +61,19 @@
       <h3>INSTRUCTIONS</h3>
       <p id="instr">You are not anonymous. Change your name and click START to begin the game.</p>
     </div>
+    <div id="sound-div" class="ui inverted segment" hidden>
+      <button id="sound-button" class="ui small inverted violet button">Sound OFF</button>
+    </div>
     <div class="story-div">
       <h3 id="story-title"></h3>
       <p id="story"></p>
     </div>
   </footer>
   
-  <audio id = "snd-click" src="audio/beep.mp3"></audio>
-  <audio id = "snd-startBattle" src="audio/startBattle.wav"></audio>
-  <audio id = "snd-dice" src="audio/dice.mp3"></audio>
-
+  <audio id="snd-startBattle" src="audio/startBattle.wav"></audio>
+  <audio id="snd-dice" src="audio/dice.mp3"></audio>
+  <audio id="snd-click" src="audio/beep.mp3"></audio>
+  <audio id="bg-music" src="audio/Atmosphere-10.wav" loop="infinite"></audio>
 
   <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"

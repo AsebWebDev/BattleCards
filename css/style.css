@@ -222,7 +222,12 @@ footer {
 
 .instructions-div p {
   color: white;
-  font-size: 2em;
+  font-size: 1.4em;
+}
+
+#sound-div {
+  align-self: flex-end;
+  margin-bottom: 30px;
 }
 
 .story-div {

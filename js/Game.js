@@ -43,7 +43,8 @@ class Game {
 
   startGame() {
     // TODO: get info with input field
-
+    $("#sound-div").show();
+    sndBgMusic.play();
     game.roundsToPlay = Number(prompt("How many round would you like to play?"));
     $("#infobox-button").off();
 
@@ -51,7 +52,7 @@ class Game {
     $("#instr").text("Every player dices once to see who starts.");
     $("#story-title").text("Let's see who can pick the first card...");
 
-    $("#infobox-button").text("Click to roll dice!, " + game.currentPlayer.name);
+    $("#infobox-button").text("Click to roll dice, " + game.currentPlayer.name);
     $("dice div").show();
 
     //clicked on dice
@@ -61,7 +62,7 @@ class Game {
       setTimeout(() => {
         $("#dice").text("");
       }, 1000);
-      $("#infobox-button").text("Click to roll dice!, " + game.currentPlayer.name);
+      $("#infobox-button").text("Click to roll dice, " + game.currentPlayer.name);
       $('#infobox-button').off();
       $('#infobox-button').on('click', function () {
         player2.currentDiceValue = game.rollTheDice();
@@ -203,14 +204,14 @@ class Game {
       $("#instr").text("Each player needs to dice to add diced number to the current value of "+game.currentPropertyInBattle+".");
       $("#story-title").text("Get lucky, "+game.currentPlayer.name+"! Dice to increase your attack!");
    
-      $("#infobox-button").text("Click to roll dice!, " + game.currentPlayer.name);
+      $("#infobox-button").text("Click to roll dice, " + game.currentPlayer.name);
       $("dice div").show();
       $('#infobox-button').on('click', function (event) {
         // event.stopImmediatePropagation();    
         game.setClasses();    
         game.diceCurrentPlayer();  
         game.switchPlayer();    
-        $("#infobox-button").text("Click to roll dice!, " + game.currentPlayer.name);
+        $("#infobox-button").text("Click to roll dice, " + game.currentPlayer.name);
         $("#story-title").text("Get lucky, "+game.currentPlayer.name+"! Dice to increase your attack!");
         $('#infobox-button').off();
         $('#infobox-button').on('click', function (event) {
