@@ -232,7 +232,6 @@ class Game {
 
           
           $("#story-title").text("Wow, what a fight! Here yo go:");
-          // $("#story").text(player1.name + ": "+player1Total+" VS. "+player2.name+": "+player2Total);
   
           game.findWinner(player1Total, player2Total);
           // $("#battle-field .bc").fadeOut();
@@ -369,6 +368,7 @@ class Game {
     }
     player1.score += BC1property;
     player2.score += BC2property;
+    sndScore.play();
   }
 
   addclickSound() {

@@ -29,6 +29,9 @@ let sndDice = $("#snd-dice")[0];
   sndDice.load();
 let sndBgMusic = $("#bg-music")[0];
   sndBgMusic.load();
+let sndScore = $("#snd-score")[0];
+  sndScore.load();
+  
 
 printCharacters(); // to console, just for Dev
 
