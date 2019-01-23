@@ -15,8 +15,32 @@ header {
   flex-direction: row;
 }
 
+#title {
+  font-size: 4rem;
+}
+
 em {
   color: white;
+  margin: 3px;
+}
+
+#summary {
+  background-color: #fdb44b;
+  height: 302px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#summary h1 {
+  text-align: center;
+}
+
+#summary:hover {
+  width: 1000px;
+  height: 400px;
+  font-size: 1.2rem;
+  padding: 30px;
 }
 
 /* I N F O B O A R D */

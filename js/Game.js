@@ -43,6 +43,9 @@ class Game {
 
   startGame() {
     game.currentPhase = 0;
+    $("#title").hide();
+    $("#summary").hide();
+    $(".instructions-div").show();
     $('#battle-field').css("background-image", "url('img/battlefield.jpg')"); 
     $('#battle-field').css("background-position-y", "center");
     $("#sound-div").show();
@@ -53,7 +56,7 @@ class Game {
     $("#infobox-button").off();
 
     // Dice, who starts first
-    $("#instr").text("Every player rolls the dice once to see who starts.");
+    $("#instr").text("You roll the dice to decide who picks the first card.");
     $("#story-title").text("Let's see who can pick the first card...");
 
     $("#infobox-button").text("Click to roll dice, " + player1.name);
@@ -139,7 +142,7 @@ class Game {
     game.updateBoard();
 
     $("#instr").text("Each player needs to pick ONE card for the upcoming battle.");
-    $("#story-title").text("Get ready for battle! Chose your hero...");
+    $("#story-title").text("Get ready for battle! choose your hero...");
 
     $("#p1-stack .bc").on("click", function () {
       event.preventDefault();
@@ -178,7 +181,7 @@ class Game {
     });
   }
 
- // Battle-Phase:  Current player choses property of current card on battlefield.
+ // Battle-Phase:  Current player chooses property of current card on battlefield.
   //                Then each Player can use PowerUp and dices (TODO)
   //                When players stacks are empty, check if there is another round to play
   //                and if not, who won ==> Gameover
@@ -194,7 +197,7 @@ class Game {
     $("#story-title").text("How do you want to attack your oponent?");
     
   
-    // Current player choses property to attack
+    // Current player chooses property to attack
     $("#battle-field .bc p").on("click", function () {
       event.preventDefault();
       let selectedProperty = $(this).prop("class");
@@ -229,7 +232,7 @@ class Game {
 
           
           $("#story-title").text("Wow, what a fight! Here yo go:");
-          $("#story").text(player1.name + ": "+player1Total+" VS. "+player2.name+": "+player2Total);
+          // $("#story").text(player1.name + ": "+player1Total+" VS. "+player2.name+": "+player2Total);
   
           game.findWinner(player1Total, player2Total);
           // $("#battle-field .bc").fadeOut();
@@ -254,7 +257,7 @@ class Game {
           } else game.startPhase2();
         }); // end dice for player 2   
       }); // end dice for player 1
-    }); // end chose property
+    }); // end choose property
   } // end of battle function
 
   rollTheDice() {

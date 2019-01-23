@@ -22,8 +22,11 @@
         <em>Click to change name</em>
       </div>
     </div>
+    
     <div class="header-box" id="card-stack">
+        <h1 id="title">WELCOME TO BATTLECARDS</h1>
     </div>
+    
     <div class="header-box" id="p2-board">
         <div id="player2nameinput" class="ui right labeled left icon input" hidden>
             <input class="inputfield" id="p2-name-input" type="text" value="" placeholder="Please enter your name" autofocus>
@@ -62,6 +65,20 @@
       <dice>
         <div id="dice" hidden>Dice •ᴗ•</div>
       </dice>
+      <div id="summary">
+        <h1><em>I N S T R U C T I O N S</em></h1>
+        <h4>It is a two player game. You got to <em>share your mouse</em> and switch 
+          players. The current player's scoreboard will be highlighted. How to play?
+        </h4>
+        <p>Each round has <em>three phases</em> :</p>
+        <ol>
+          <li><em>Who is first?</em> --- You roll the dice to decide who picks the first card.</li>
+          <li><em>Create your little army!</em> --- Each player has to  
+            <em>pick up three</em> cards. You <em>switch turns</em> after picking one.
+          </li>
+          <li><em>Time for Battle!</em> --- Each player  <em>picks one</em> card for battle. The current player <em>chooses one of the character traits</em> to attack with. Then both players <em>throw the dice</em> to add some luck to their score.</li>
+        </ol> 
+      </div>
       <div id="bf-p2"></div>
     </div>
     <div class="p-stack" id="p2-stack">
@@ -72,7 +89,7 @@
   </gameboard>
 
   <footer>
-    <div class="instructions-div">
+    <div class="instructions-div" hidden>
       <h3>INSTRUCTIONS</h3>
       <p id="instr">You are not anonymous. Change your name and click START to begin the game.</p>
     </div>
