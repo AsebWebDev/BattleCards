@@ -18,6 +18,28 @@ header {
 em {
   color: white;
 }
+
+/* I N F O B O A R D */
+
+#infoboard {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#roundselector {
+  margin: 10px;
+  padding: 7px;
+  background-color: #520556;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  text-align: center;
+  width: 50px;
+  font-size: 1em;
+}
+
 /* Board Player 1  */
 
 .header-box {

@@ -45,7 +45,9 @@ class Game {
     // TODO: get info with input field
     $("#sound-div").show();
     sndBgMusic.play();
-    game.roundsToPlay = Number(prompt("How many round would you like to play?"));
+    game.roundsToPlay = Number($("#roundselector").val());
+    $("#input-div").hide();
+    
     $("#infobox-button").off();
 
     // Dice, who starts first

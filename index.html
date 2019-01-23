@@ -30,11 +30,20 @@
     </div>
   </header>
 
-  <div id="infobox">
+  <div id="infoboard">
+      <div id="input-div" class="ui right labeled left icon input">
+          <a class="ui tag label">
+              How many rounds to play? 
+            </a>
+          <input id="roundselector" type="number" value="1" placeholder="Enter a number">
+        </div>
+    <div id="infobox">
       <div id="infobox-button-div" class="ui inverted segment">
           <button id="infobox-button" class="ui large inverted teal button">START GAME</button>
       </div>
+    </div>
   </div>
+  
 
   <gameboard>
     <div class="p-stack" id="p1-stack">
@@ -79,7 +88,7 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
-  <script src="./semantic/semantic.min.js"></script>
+  <!-- <script src="./semantic/semantic.min.js"></script> -->
   <script src="./js/utils.js"></script>
   <script src="./js/Character.js"></script>
   <script src="./js/Player.js"></script>
