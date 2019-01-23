@@ -163,6 +163,7 @@ gameboard {
   width: 100px;
   border-radius: 15px;
   background-color: #0ea5c6;
+  box-shadow: 5px 5px 5px teal;
 }
 
 .bc p:hover {

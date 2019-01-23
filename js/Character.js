@@ -20,8 +20,8 @@ let imgLinkHero = "../img/link.png";
 let imgDumbZombie = "../img/zombie.jpg";
 let imgCuteMonster = "../img/cuteMonster.jpg";
 let imgStrongWarrior = "../img/strongWarrior.jpg";
-let imgBlooper = "/img/Blooper_MK7.png";
-let imgCrazyCat = "/img/cat.gif";
+let imgBlooper = "../img/Blooper_MK7.png";
+let imgCrazyCat = "../img/cat.gif";
 
 // Characters
 
