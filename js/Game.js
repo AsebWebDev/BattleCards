@@ -53,7 +53,7 @@ class Game {
     $("#infobox-button").off();
 
     // Dice, who starts first
-    $("#instr").text("Every player dices once to see who starts.");
+    $("#instr").text("Every player rolls the dice once to see who starts.");
     $("#story-title").text("Let's see who can pick the first card...");
 
     $("#infobox-button").text("Click to roll dice, " + player1.name);
