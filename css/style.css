@@ -1,18 +1,19 @@
 /* body {
   background: #520556; 
-  background: -webkit-linear-gradient(to right, #8B104E, #520556);
-  background: linear-gradient(to right, #8B104E, #520556);
+  background: -webkit-linear-gradient(to right, #448ef6, #520556);
+  background: linear-gradient(to right, #448ef6, #520556);
 } */
 
 body {
-  background-color: #8b104e;
+  background-color: #448ef6;
+  font-family: Oswald;
 }
 
 /* COLOR PALETTE */
-/* First: #ff9900 */
-/* Seconds: #CA431D */
-/* Third: #8B104E */
-/* Fourth: #520556: */
+/* First: #074684 */
+/* Seconds: #005792 */
+/* Third: #448ef6 */
+/* Fourth: #fdb44b: */
 
 /* H E A D E R  */
 header {
@@ -20,6 +21,9 @@ header {
   flex-direction: row;
 }
 
+em {
+  color: white;
+}
 /* Board Player 1  */
 
 .header-box {
@@ -27,7 +31,6 @@ header {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-
 }
 
 .header-box span {
@@ -38,24 +41,28 @@ header {
 #p1-board {
   width: 20%;
   background-color: #520556;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
+  border-radius: 50px 5px 5px 50px;
+  background-image: url("/img/space-left.jpg");
 }
 
 .selected {
-  border: 10px solid green;
+  border: 10px solid #fdb44b;
 } 
 
 /* Card Stack  */
 
 #card-stack {
 width: 60%;
-height: 160px;
+height: 165px;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
 /* background-color: rgba(255,153,0, 0.7); */
-background-color:#ff9900;
+/* background-color:#074684; */
+margin-top: 10px;
+background: #00204a; 
+background: -webkit-linear-gradient(to top, #448ef6, #00204a);
+background: linear-gradient(to top, #448ef6, #00204a);
 }
 
 /* Board Player 2  */
@@ -63,8 +70,9 @@ background-color:#ff9900;
 #p2-board {
   width: 20%;
   background-color: #520556;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
+  border-radius: 5px 50px 50px 5px;
+  background-image: url("/img/space-right.jpg");
+
 }
 
 /* I N F O B O X  */
@@ -94,7 +102,7 @@ gameboard {
   display: flex;
   flex-direction: row;
   padding: 30px;
-  background-color: #ff9900;
+  background-color: #074684;
   height: 300px;
   width: 30%;
 }
@@ -139,7 +147,7 @@ gameboard {
 
 #dice {
   font-size: 8em;
-
+  color: #fdb44b;
 }
 
 /* C A R D  */
@@ -154,7 +162,7 @@ gameboard {
   height: 140px;
   width: 100px;
   border-radius: 15px;
-  background-color: #ca431d;
+  background-color: #0ea5c6;
 }
 
 .bc p:hover {

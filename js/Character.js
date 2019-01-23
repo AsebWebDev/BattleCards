@@ -17,7 +17,7 @@ class Character {
 let imgNonBinary = "../img/images.jpeg";
 let imgPinkKirby = "../img/DJY6Lz2.png";
 let imgLinkHero = "../img/link.png";
-let imgDumbZombie = "../img/assets-2029818_960_720.png";
+let imgDumbZombie = "../img/zombie.jpg";
 let imgCuteMonster = "../img/cuteMonster.jpg";
 let imgStrongWarrior = "../img/strongWarrior.jpg";
 let imgBlooper = "/img/Blooper_MK7.png";
