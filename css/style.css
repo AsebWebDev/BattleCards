@@ -41,7 +41,7 @@ em {
 #p1-board {
   width: 20%;
   background-color: #520556;
-  border-radius: 50px 5px 5px 50px;
+  border-radius: 50px 0px 5px 50px;
   background-image: url("../img/space-left.jpg");
 }
 
@@ -53,11 +53,11 @@ em {
 
 #card-stack {
 width: 60%;
-height: 165px;
+height: 175px;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
-margin-top: 10px;
+margin-top: 0px;
 background: #00204a; 
 background: -webkit-linear-gradient(to top, #448ef6, #00204a);
 background: linear-gradient(to top, #448ef6, #00204a);
@@ -68,7 +68,7 @@ background: linear-gradient(to top, #448ef6, #00204a);
 #p2-board {
   width: 20%;
   background-color: #520556;
-  border-radius: 5px 50px 50px 5px;
+  border-radius: 0px 50px 50px 5px;
   background-image: url("../img/space-left.jpg");
 }
 
@@ -160,7 +160,7 @@ gameboard {
   align-items: center;
   text-align: center;
   padding: 7px;;
-  margin: 5px;
+  margin: 15px;
   height: 140px;
   width: 100px;
   border-radius: 15px;
