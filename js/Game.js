@@ -92,6 +92,8 @@ class Game {
     game.fillCardStack();
     game.currentPhase = 1;
     game.updateBoard();
+    game.addclickSound();
+
 
     $("#instr").text("Pick a card to build your personal army. When each player has got 3 soldiers, you are prepared for battle!");
     $("#story-title").text("Which warrior should be part of your army?");
@@ -129,6 +131,7 @@ class Game {
   startPhase2() {
     game.currentPhase = 2;
     $(".bc").off();
+    game.addclickSound();
     game.updateBoard();
 
     $("#instr").text("Each player needs to pick ONE card for the upcoming battle.");
@@ -176,8 +179,10 @@ class Game {
   //                When players stacks are empty, check if there is another round to play
   //                and if not, who won ==> Gameover
   startBattle() {
+    sndStartBattle.play();
     game.currentPhase = 3;
     $(".bc").off();
+    game.addclickSound();
     setTimeout(() => {
       $("#story").text("");
     },1500);
@@ -248,6 +253,7 @@ class Game {
   } // end of battle function
 
   rollTheDice() {
+    sndDice.play();
     let i,
         faceValue,
         sum = 0,
@@ -353,6 +359,12 @@ class Game {
     }
     player1.score += BC1property;
     player2.score += BC2property;
+  }
+
+  addclickSound() {
+    $(".bc").on("click", () => {
+      sndClick.play();
+    });
   }
 }
 

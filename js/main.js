@@ -22,6 +22,12 @@ let game = new Game(cardsDatabase); //array comes from Character.js
 let player1 = new Player("Player 1");
 let player2 = new Player("Player 2");
 let maxCards = 6;
+let sndClick = $("#snd-click")[0];
+  sndClick.load();
+let sndStartBattle = $("#snd-startBattle")[0];
+  sndStartBattle.load();
+let sndDice = $("#snd-dice")[0];
+  sndDice.load();
 
 printCharacters(); // to console, just for Dev
 
@@ -54,3 +60,5 @@ $("#p2-name").click(function () {
     $("#p2-name span").text(player2.name);
   }
 });
+
+
