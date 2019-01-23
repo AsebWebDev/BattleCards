@@ -57,8 +57,6 @@ height: 165px;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
-/* background-color: rgba(255,153,0, 0.7); */
-/* background-color:#074684; */
 margin-top: 10px;
 background: #00204a; 
 background: -webkit-linear-gradient(to top, #448ef6, #00204a);
@@ -72,7 +70,6 @@ background: linear-gradient(to top, #448ef6, #00204a);
   background-color: #520556;
   border-radius: 5px 50px 50px 5px;
   background-image: url("/img/space-right.jpg");
-
 }
 
 /* I N F O B O X  */
@@ -135,6 +132,11 @@ gameboard {
   border-radius: 6px;
 }
 
+#battle-field .bc p:hover {
+  font-weight: bold;
+  color: yellow;
+}
+
 #bf-p2{
   margin-right: 30px;
 }
@@ -163,13 +165,24 @@ gameboard {
   width: 100px;
   border-radius: 15px;
   background-color: #0ea5c6;
-  box-shadow: 5px 5px 5px teal;
+  /* box-shadow: 5px 5px 5px teal; */
+  -webkit-box-shadow: 1px 1px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    1px 1px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         1px 1px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
-.bc p:hover {
-  font-weight: bold;
-  color: yellow;
+.bc:hover {
+  height: 160px;
+  width: 130px;
 }
+.bc:hover p{
+  font-size: 1rem;
+}
+
+.bc:hover span{
+  font-size: 1rem;
+}
+
 
 .bc img {
   /* height: 8vh;
