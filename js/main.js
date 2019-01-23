@@ -31,8 +31,10 @@ let sndBgMusic = $("#bg-music")[0];
   sndBgMusic.load();
 let sndScore = $("#snd-score")[0];
   sndScore.load();
+let sndEndGame = $("#snd-endgame")[0];
+  sndEndGame.load();
   
-
+  
 printCharacters(); // to console, just for Dev
 
 

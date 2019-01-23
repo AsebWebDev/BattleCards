@@ -292,6 +292,7 @@ class Game {
         if (player1.score > player2.score) winner = player1;
         else winner = player2;
         $("#story-title").text("Game over! The winner is " + winner.name);
+        sndEndGame.play();
         $("#infobox button").text("Game Over! Click here to start again!");
         $("#infobox-button").on("click", function () {
           game.restartGame();
