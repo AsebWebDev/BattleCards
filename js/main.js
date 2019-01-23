@@ -45,18 +45,32 @@ $("#infobox-button").on("click", function () {
 
 // Enter names Click Event
 $("#p1-name").click(function () {
-  let enteredName = prompt("What is your name, Player 1?");
-  if (enteredName != null) {
-    player1.name = enteredName;
+  $("#p1-name").hide();
+  $("#player1nameinput").show();
+});
+
+$("#player1nameinput").on("keypress", (e) => {
+  let key = e.which;
+  if (key === 13) {
+    player1.name = $("#p1-name-input").val();
+    $("#player1nameinput").hide();
     $("#p1-name span").text(player1.name);
+    $("#p1-name").show();
   }
 });
 
 $("#p2-name").click(function () {
-  let enteredName = prompt("What is your name, Player 2?");
-  if (enteredName != null) {
-    player2.name = enteredName;
+  $("#p2-name").hide();
+  $("#player2nameinput").show();
+});
+
+$("#player2nameinput").on("keypress", (e) => {
+  let key = e.which;
+  if (key === 13) {
+    player2.name = $("#p2-name-input").val();
+    $("#player2nameinput").hide();
     $("#p2-name span").text(player2.name);
+    $("#p2-name").show();
   }
 });
 

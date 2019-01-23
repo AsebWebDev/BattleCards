@@ -13,6 +13,9 @@
 
   <header>
     <div class="header-box" id="p1-board">
+      <div id="player1nameinput" class="ui right labeled left icon input" hidden>
+          <input class="inputfield" id="p1-name-input" type="text" value="" placeholder="Please enter your name" autofocus>
+      </div>
       <span id="p1-score"></span>
       <div id="p1-name">
         <span >Player 1</span><br>
@@ -22,6 +25,9 @@
     <div class="header-box" id="card-stack">
     </div>
     <div class="header-box" id="p2-board">
+        <div id="player2nameinput" class="ui right labeled left icon input" hidden>
+            <input class="inputfield" id="p2-name-input" type="text" value="" placeholder="Please enter your name" autofocus>
+        </div>
       <span id="p2-score"></span>
       <div id="p2-name">
           <span >Player 2</span><br>
@@ -35,8 +41,8 @@
           <a class="ui tag label">
               How many rounds to play? 
             </a>
-          <input id="roundselector" type="number" value="1" placeholder="Enter a number">
-        </div>
+          <input class="inputfield" id="roundselector" type="number" value="1" placeholder="Enter a number">
+      </div>
     <div id="infobox">
       <div id="infobox-button-div" class="ui inverted segment">
           <button id="infobox-button" class="ui large inverted teal button">START GAME</button>

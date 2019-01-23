@@ -28,6 +28,19 @@ em {
   align-items: center;
 }
 
+.inputfield {
+  margin: 10px;
+  padding: 7px;
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 1em;
+}
+
+#p2-name-input, #p1-name-input{
+  width: 200px;
+}
+
 #roundselector {
   margin: 10px;
   padding: 7px;
