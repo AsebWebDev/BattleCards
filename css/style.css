@@ -197,6 +197,10 @@ footer {
   justify-content: space-between;
   height: 180px;
   margin-top: 40px;
+  border-radius: 10px;
+  background: #00204a; 
+  background: -webkit-linear-gradient(to bottom, #448ef6, #00204a);
+  background: linear-gradient(to bottom, #448ef6, #00204a);
 }
 
 .instructions-div {
