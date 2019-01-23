@@ -42,7 +42,7 @@ em {
   width: 20%;
   background-color: #520556;
   border-radius: 50px 5px 5px 50px;
-  background-image: url("img/space-left.jpg");
+  background-image: url("../img/space-left.jpg");
 }
 
 .selected {
@@ -69,7 +69,7 @@ background: linear-gradient(to top, #448ef6, #00204a);
   width: 20%;
   background-color: #520556;
   border-radius: 5px 50px 50px 5px;
-  background-image: url("img/space-right.jpg");
+  background-image: url("../img/space-left.jpg");
 }
 
 /* I N F O B O X  */
