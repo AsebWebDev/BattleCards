@@ -56,7 +56,7 @@ class Game {
     $("#instr").text("Every player dices once to see who starts.");
     $("#story-title").text("Let's see who can pick the first card...");
 
-    $("#infobox-button").text("Click to roll dice, " + game.currentPlayer.name);
+    $("#infobox-button").text("Click to roll dice, " + player1.name);
     $("dice div").show();
 
     //clicked on dice
@@ -64,9 +64,9 @@ class Game {
       player1.currentDiceValue = game.rollTheDice();
       $("#story").text(player1.name + " diced a " + player1.currentDiceValue);
       setTimeout(() => {
-        $("#dice").text("");
+        $("#dice").text("Dice •ᴗ•");
       }, 1000);
-      $("#infobox-button").text("Click to roll dice, " + game.currentPlayer.name);
+      $("#infobox-button").text("Click to roll dice, " + player2.name);
       $('#infobox-button').off();
       $('#infobox-button').on('click', function () {
         player2.currentDiceValue = game.rollTheDice();
@@ -74,7 +74,6 @@ class Game {
         if (player2.currentDiceValue > player1.currentDiceValue) {
           game.currentPlayer = player2;
         } else game.currentPlayer = player1;
-        // game.setClasses();
         $("#story").text(player2.name + " diced " + player2.currentDiceValue);
 
         $('#infobox-button').off();
@@ -82,7 +81,7 @@ class Game {
           player1.currentDiceValue = 0;
           player2.currentDiceValue = 0;
           $("#story").text("");
-          $("#dice").text("");
+          $("#dice").text("Dice •ᴗ•");
           $("dice div").hide();    
         }, 2000);
         $("#story-title").text(game.currentPlayer.name + " starts!");
@@ -225,21 +224,18 @@ class Game {
           game.switchPlayer();
           $('#infobox-button').off();
 
-          console.log("Player1prop: "+player1prop);
-          console.log("Player2prop: "+player2prop);
           let player1Total = player1prop + player1.currentDiceValue;
           let player2Total = player2prop + player2.currentDiceValue;
-          console.log("Player1 Total: " + player1Total);
-          console.log("Player2 Total: " + player2Total);
+
           
           $("#story-title").text("Wow, what a fight! Here yo go:");
           $("#story").text(player1.name + ": "+player1Total+" VS. "+player2.name+": "+player2Total);
   
           game.findWinner(player1Total, player2Total);
-          $("#battle-field .bc").fadeOut();
-          setTimeout(() => {
-            game.cleanBattlefield();
-          }, 2000);
+          // $("#battle-field .bc").fadeOut();
+          // setTimeout(() => {
+          game.cleanBattlefield();
+          // }, 2000);
   
           // check if cards left, game is over or another round to play
           if (player1.currentCards.length === 0 && player1.currentCards.length === 0) {
@@ -249,7 +245,7 @@ class Game {
               $('#battle-field').css("background-image", "url('img/GAME-OVER.png')"); 
               $('#battle-field').css("background-position-y", "center");  
               $('#battle-field').css("background-position-x", "center");  
-              $('#battle-field').css("background-repeat", "none");  
+              $('#battle-field').css("background-repeat", "no-repeat");  
             } else {
               game.currentRound++;
               game.fillCardStack();
@@ -281,7 +277,7 @@ class Game {
     game.currentPlayer.currentDiceValue = game.rollTheDice();
     console.log(game.currentPlayer.name+" diced with result "+game.currentPlayer.currentDiceValue);
     setTimeout(() => {
-      $("#dice").text("");
+      $("#dice").text("Dice •ᴗ•");
     }, 1200);
   }
 
@@ -318,7 +314,9 @@ class Game {
     player1.currentDiceValue = null;
     player2.currentDiceValue = null;
     game.currentPropertyInBattle = null;
-    $("dice div").hide();
+    setTimeout(() => {
+      $("dice div").hide();
+    }, 1000);
   }
 
   setClasses(){
