@@ -14,14 +14,14 @@ class Character {
 // C H A R A C T E R S
 
 // Character Images
-let imgNonBinary = "../img/images.jpeg";
-let imgPinkKirby = "../img/DJY6Lz2.png";
-let imgLinkHero = "../img/link.png";
-let imgDumbZombie = "../img/zombie.jpg";
-let imgCuteMonster = "../img/cuteMonster.jpg";
-let imgStrongWarrior = "../img/strongWarrior.jpg";
-let imgBlooper = "../img/Blooper_MK7.png";
-let imgCrazyCat = "./img/cat.gif";
+let imgNonBinary = "img/images.jpeg";
+let imgPinkKirby = "img/DJY6Lz2.png";
+let imgLinkHero = "img/link.png";
+let imgDumbZombie = "img/zombie.jpg";
+let imgCuteMonster = "img/cuteMonster.jpg";
+let imgStrongWarrior = "img/strongWarrior.jpg";
+let imgBlooper = "img/Blooper_MK7.png";
+let imgCrazyCat = "img/cat.gif";
 
 // Characters
 
