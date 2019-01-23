@@ -242,7 +242,7 @@ class Game {
             game.updateBoard();
             // check if its game over, else start another round
             if (game.checkGameOver() === true) {
-              $('#battle-field').css("background-image", "url('img/GAME-OVER.png')"); 
+              $('#battle-field').css("background-image", "url('img/gameoverbig.gif')"); 
               $('#battle-field').css("background-position-y", "center");  
               $('#battle-field').css("background-position-x", "center");  
               $('#battle-field').css("background-repeat", "no-repeat");  
