@@ -5,7 +5,7 @@ class Game {
     this.cardsArray = cardsArray;
     this.currentPlayer = {};
     this.currentPropertyInBattle = null;
-    this.currentPhase = 0;
+    this.currentPhase = null;
     this.currentRound = 1;
     this.roundsToPlay = 1;
   }
@@ -42,7 +42,9 @@ class Game {
   }
 
   startGame() {
-    // TODO: get info with input field
+    game.currentPhase = 0;
+    $('#battle-field').css("background-image", "url('img/battlefield.jpg')"); 
+    $('#battle-field').css("background-position-y", "center");
     $("#sound-div").show();
     sndBgMusic.play();
     game.roundsToPlay = Number($("#roundselector").val());
@@ -101,7 +103,6 @@ class Game {
     $("#instr").text("Pick a card to build your personal army. When each player has got 3 soldiers, you are prepared for battle!");
     $("#story-title").text("Which warrior should be part of your army?");
 
-
     // Click Listener Cardstack
     $("#card-stack .bc").on("click", function () {
       event.preventDefault();
@@ -120,6 +121,7 @@ class Game {
       } else {
         $(".p2-cards").append(this);
       }
+      $(".p-stack .bc").off(); // avoid user from clicking on current user stack
       game.switchPlayer();
 
       //check if all cards from game stack are distributed
@@ -234,7 +236,7 @@ class Game {
           $("#story").text(player1.name + ": "+player1Total+" VS. "+player2.name+": "+player2Total);
   
           game.findWinner(player1Total, player2Total);
-          
+          $("#battle-field .bc").fadeOut();
           setTimeout(() => {
             game.cleanBattlefield();
           }, 2000);
@@ -244,7 +246,10 @@ class Game {
             game.updateBoard();
             // check if its game over, else start another round
             if (game.checkGameOver() === true) {
-              console.log("Gameover");
+              $('#battle-field').css("background-image", "url('img/GAME-OVER.png')"); 
+              $('#battle-field').css("background-position-y", "center");  
+              $('#battle-field').css("background-position-x", "center");  
+              $('#battle-field').css("background-repeat", "none");  
             } else {
               game.currentRound++;
               game.fillCardStack();

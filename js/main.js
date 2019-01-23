@@ -1,14 +1,16 @@
 /*jshint esversion: 6 */
 
 // T O D O
-// - @media? to make site fully responsive on small screens
+// -
 // create Readme
-// add Backgrounds
-// add sounds & backgroudn music?
-// add an extra InfoBoard for live game instructions.
-// find a better Font
-  // event.preventDefault() überall hinzufügen
-  // 
+// create more characters
+// big intro screen
+// event.preventDefault() überall hinzufügen
+
+// I F   T I M E   T O D O
+// find another style
+// add Background to battlefield
+// @media? to make site fully responsive on small screens
 
 // G E T   D O M 
 
@@ -31,9 +33,9 @@ let sndBgMusic = $("#bg-music")[0];
 printCharacters(); // to console, just for Dev
 
 
-//First set Player1 default, after clicking Start,
-//the users will dice who is first
+// Set default values
 game.currentPlayer = player1;
+ 
 
 // A click event is set for the game to start. 
 // After starting users will be asked how many rounds they want to play,
