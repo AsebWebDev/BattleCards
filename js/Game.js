@@ -51,7 +51,7 @@ class Game {
     $("#instr").text("Every player dices once to see who starts.");
     $("#story-title").text("Let's see who can pick the first card...");
 
-    $("#infobox-button").text("Click to Dice, " + game.currentPlayer.name);
+    $("#infobox-button").text("Click to roll dice!, " + game.currentPlayer.name);
     $("dice div").show();
 
     //clicked on dice
@@ -61,7 +61,7 @@ class Game {
       setTimeout(() => {
         $("#dice").text("");
       }, 1000);
-      $("#infobox-button").text("Click to Dice, " + game.currentPlayer.name);
+      $("#infobox-button").text("Click to roll dice!, " + game.currentPlayer.name);
       $('#infobox-button').off();
       $('#infobox-button').on('click', function () {
         player2.currentDiceValue = game.rollTheDice();
@@ -203,14 +203,14 @@ class Game {
       $("#instr").text("Each player needs to dice to add diced number to the current value of "+game.currentPropertyInBattle+".");
       $("#story-title").text("Get lucky, "+game.currentPlayer.name+"! Dice to increase your attack!");
    
-      $("#infobox-button").text("Click to Dice, " + game.currentPlayer.name);
+      $("#infobox-button").text("Click to roll dice!, " + game.currentPlayer.name);
       $("dice div").show();
       $('#infobox-button').on('click', function (event) {
         // event.stopImmediatePropagation();    
         game.setClasses();    
         game.diceCurrentPlayer();  
         game.switchPlayer();    
-        $("#infobox-button").text("Click to Dice, " + game.currentPlayer.name);
+        $("#infobox-button").text("Click to roll dice!, " + game.currentPlayer.name);
         $("#story-title").text("Get lucky, "+game.currentPlayer.name+"! Dice to increase your attack!");
         $('#infobox-button').off();
         $('#infobox-button').on('click', function (event) {
@@ -219,9 +219,7 @@ class Game {
           game.diceCurrentPlayer();
           game.switchPlayer();
           $('#infobox-button').off();
-          // setTimeout(() => {
-          //   $("dice div").hide();
-          // }, 2000);
+
           console.log("Player1prop: "+player1prop);
           console.log("Player2prop: "+player2prop);
           let player1Total = player1prop + player1.currentDiceValue;
@@ -233,7 +231,10 @@ class Game {
           $("#story").text(player1.name + ": "+player1Total+" VS. "+player2.name+": "+player2Total);
   
           game.findWinner(player1Total, player2Total);
-          game.cleanBattlefield();
+          
+          setTimeout(() => {
+            game.cleanBattlefield();
+          }, 2000);
   
           // check if cards left, game is over or another round to play
           if (player1.currentCards.length === 0 && player1.currentCards.length === 0) {
