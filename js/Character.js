@@ -197,7 +197,7 @@ const AngryBomb = new Character(
 );
 
 const LovingBlobber = new Character(
-  "Loving Blobber", // Name
+  "Love Blobber", // Name
   imgLovingBlobber, // Image
   2, // Strength
   4, // Intelligence

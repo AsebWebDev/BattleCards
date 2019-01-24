@@ -207,7 +207,11 @@ class Game {
       
       let player1prop = player1.currentCardInBattle[game.currentPropertyInBattle];
       let player2prop = player2.currentCardInBattle[game.currentPropertyInBattle];
-  
+      
+      player1.score += player1prop;
+      player2.score += player2prop;
+      game.updateBoard();
+
       $("#instr").text("Each player needs to dice to add diced number to the current value of "+game.currentPropertyInBattle+".");
       $("#story-title").text("Get lucky, "+game.currentPlayer.name+"! Dice to increase your attack!");
    
@@ -217,6 +221,8 @@ class Game {
         // event.stopImmediatePropagation();    
         game.setClasses();    
         game.diceCurrentPlayer();  
+        game.currentPlayer.score += game.currentPlayer.currentDiceValue;
+        game.updateBoard();
         game.switchPlayer();    
         $("#infobox-button").text("Click to roll dice, " + game.currentPlayer.name);
         $("#story-title").text("Get lucky, "+game.currentPlayer.name+"! Dice to increase your attack!");
@@ -225,6 +231,8 @@ class Game {
           event.stopImmediatePropagation();
           game.setClasses();    
           game.diceCurrentPlayer();
+          game.currentPlayer.score += game.currentPlayer.currentDiceValue;
+          game.updateBoard();
           game.switchPlayer();
           $('#infobox-button').off();
 
@@ -251,7 +259,6 @@ class Game {
               $('#battle-field').css("background-repeat", "no-repeat");  
             } else {
               game.currentRound++;
-              game.fillCardStack();
               game.startPhase1();
             }
           } else game.startPhase2();
@@ -368,8 +375,6 @@ class Game {
         console.log(player2.name + " won!");
         game.currentPlayer = player2;
     }
-    player1.score += BC1property;
-    player2.score += BC2property;
     sndScore.play();
   }
 
