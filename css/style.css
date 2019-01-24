@@ -449,31 +449,31 @@ footer {
   font-size: 2em;
 }
 
-@media (max-width: 1500px) {
+@media screen and (max-width: 1500px) {
   body { 
      font-size: 0.9em; 
   }
 }
 
-@media (max-width: 1150px) {
+@media screen and (max-width: 1150px) {
   body { 
      font-size: 0.8em; 
   }
 }
 
-@media (max-width: 850px) {
+@media screen and (max-width: 850px) {
   body { 
      font-size: 0.7em; 
   }
 }
 
-@media (max-width: 690px) {
+@media screen and (max-width: 690px) {
   body { 
      font-size: 0.6em; 
   }
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   body { 
      font-size: 0.5em; 
   }

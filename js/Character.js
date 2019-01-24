@@ -53,7 +53,7 @@ const Maxence = new Character(
 );
 
 const ShadowZombie = new Character(
-  "Shadow Zombie", // Name
+  "DarkZombie", // Name
   imgShadowZombie, // Image
   8, // Strength
   1, // Intelligence
