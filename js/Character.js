@@ -179,7 +179,7 @@ const MissEgg = new Character(
 );
 
 const YummyCupcake = new Character(
-  "Yummy Cupcake", // Name
+  "Yummy", // Name
   imgYummyCupcake, // Image
   10, // Strength
   4, // Intelligence
