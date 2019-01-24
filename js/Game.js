@@ -49,6 +49,7 @@ class Game {
     $('#battle-field').css("background-image", "url('img/battlefield.jpg')"); 
     $('#battle-field').css("background-position-y", "center");
     $("#sound-div").show();
+    sndInit.play();
     sndBgMusic.play();
     game.roundsToPlay = Number($("#roundselector").val());
     $("#input-div").hide();

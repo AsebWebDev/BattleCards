@@ -21,6 +21,8 @@ let game = new Game(cardsDatabase); //array comes from Character.js
 let player1 = new Player("Player 1");
 let player2 = new Player("Player 2");
 let maxCards = 6;
+let sndInit = $("#snd-init")[0];
+  sndInit.load();
 let sndClick = $("#snd-click")[0];
   sndClick.load();
 let sndStartBattle = $("#snd-startBattle")[0];
