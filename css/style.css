@@ -84,6 +84,7 @@ em {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  /* border: 10px solid rgba(251, 251, 145, 1); */
 }
 
 .header-box span {
@@ -98,9 +99,30 @@ em {
   background-image: url("../img/space-left.jpg");
 }
 
+#p2-board {
+  width: 20%;
+  background-color: #520556;
+  border-radius: 0px 50px 50px 5px;
+  background-image: url("../img/space-left.jpg");
+}
+
+
 .selected {
-  border: 10px solid #fdb44b;
+  border: 10px solid rgba(253,180,75,1);
+	animation-name: fadeInBorder;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.3s;
 } 
+
+@keyframes fadeInBorder{
+	0% {
+		border: 10px solid rgba(253,180,75,0);
+	}
+	100% {
+		border: 10px solid rgba(253,180,75,1);
+	}
+}
 
 /* Card Stack  */
 
@@ -114,15 +136,6 @@ margin-top: 0px;
 background: #00204a; 
 background: -webkit-linear-gradient(to top, #448ef6, #00204a);
 background: linear-gradient(to top, #448ef6, #00204a);
-}
-
-/* Board Player 2  */
-
-#p2-board {
-  width: 20%;
-  background-color: #520556;
-  border-radius: 0px 50px 50px 5px;
-  background-image: url("../img/space-left.jpg");
 }
 
 /* I N F O B O X  */
