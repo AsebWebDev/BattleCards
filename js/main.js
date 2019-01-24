@@ -84,17 +84,14 @@ $("#player2nameinput").on("keypress", (e) => {
 // Turn sound off/on button click event
 
 $("#sound-button").on("click", function () {
-  console.log("Sound Button clicked");
   event.preventDefault();
 
-  if ($(this).text() === "Sound OFF") {
-    console.log("Sound stop");
+  if ($(this).text() === "Music OFF") {
     sndBgMusic.pause();
-    $(this).text("Sound ON");
-  } else if ($(this).text() === "Sound ON") {
+    $(this).text("Music ON");
+  } else if ($(this).text() === "Music ON") {
     sndBgMusic.play();
-    $(this).text("Sound OFF");
-    console.log("Sound play");
+    $(this).text("Music OFF");
   }
 });
 
