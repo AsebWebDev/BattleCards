@@ -40,9 +40,18 @@ let imgWorkoutWilli = "img/toru.gif";
 let imgTrump = "img/trump.gif";
 let imgWhistle = "img/whistleMonster.gif";
 let imgShadowZombie = "img/zombieshadow.gif";
-
+let imgMaxence = "img/maxence.jpg";
 
 // Characters
+let Maxence = new Character(
+  "Maxence", // Name
+  imgMaxence, // Image
+  10, // Strength
+  10, // Intelligence
+  10, // Humor
+  10 // Cuteness
+);
+
 let ShadowZombie = new Character(
   "Shadow Zombie", // Name
   imgShadowZombie, // Image
@@ -303,5 +312,6 @@ let cardsDatabase = [
   WorkoutWilli,
   Trump,
   Whistle,
-  ShadowZombie
+  ShadowZombie,
+  Maxence
 ];
