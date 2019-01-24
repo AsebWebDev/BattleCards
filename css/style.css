@@ -413,18 +413,19 @@ footer {
 
 .instructions-div {
   text-align: center;
+  color: white;
+  opacity: 0.3;
   width: 40%;
 }
 
 .instructions-div h3 {
   line-height: 0px;
-  color: white;
   font-size: 2em;
 }
 
 .instructions-div p {
-  color: white;
   font-size: 1.4em;
+  
 }
 
 #sound-div {
