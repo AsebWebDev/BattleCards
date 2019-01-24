@@ -14,36 +14,36 @@ class Character {
 // C H A R A C T E R S
 
 // Character Images
-let imgNonBinary = "img/images.jpeg";
-let imgPinkKirby = "img/DJY6Lz2.jpg";
-let imgLinkHero = "img/link.png";
-let imgDumbZombie = "img/zombie.jpg";
-let imgCuteMonster = "img/cuteMonster.jpg";
-let imgStrongWarrior = "img/strongWarrior.jpg";
-let imgBlooper = "img/Blooper_MK7.png";
-let imgCrazyCat = "img/cat.gif";
-let imgCuriousAlien = "img/alien.gif";
-let imgLovingBlobber = "img/blobber.gif";
-let imgAngryBomb = "img/bomb.gif";
-let imgYummyCupcake = "img/cupcake.gif";
-let imgMissEgg = "img/egg.gif";
-let imgHairyHarry = "img/hairy.gif";
-let imgJumpyJenny = "img/jumpy.gif";
-let imgMoss = "img/moss.gif";
-let imgBuuHuu = "img/buuhuu.jpg";
-let imgWebDev = "img/nerdy.gif";
-let imgRowdyRocker = "img/rocker.gif";
-let imgLateLinda = "img/running.gif";
-let imgFox = "img/spritefox.gif";
-let imgHero = "img/spritehero.gif";
-let imgWorkoutWilli = "img/toru.gif";
-let imgTrump = "img/trump.gif";
-let imgWhistle = "img/whistleMonster.gif";
-let imgShadowZombie = "img/zombieshadow.gif";
-let imgMaxence = "img/maxence.jpg";
+const imgNonBinary = "img/images.jpeg";
+const imgPinkKirby = "img/DJY6Lz2.jpg";
+const imgLinkHero = "img/link.png";
+const imgDumbZombie = "img/zombie.jpg";
+const imgCuteMonster = "img/cuteMonster.jpg";
+const imgStrongWarrior = "img/strongWarrior.jpg";
+const imgBlooper = "img/Blooper_MK7.png";
+const imgCrazyCat = "img/cat.gif";
+const imgCuriousAlien = "img/alien.gif";
+const imgLovingBlobber = "img/blobber.gif";
+const imgAngryBomb = "img/bomb.gif";
+const imgYummyCupcake = "img/cupcake.gif";
+const imgMissEgg = "img/egg.gif";
+const imgHairyHarry = "img/hairy.gif";
+const imgJumpyJenny = "img/jumpy.gif";
+const imgMoss = "img/moss.gif";
+const imgBuuHuu = "img/buuhuu.jpg";
+const imgWebDev = "img/nerdy.gif";
+const imgRowdyRocker = "img/rocker.gif";
+const imgLateLinda = "img/running.gif";
+const imgFox = "img/spritefox.gif";
+const imgHero = "img/spritehero.gif";
+const imgWorkoutWilli = "img/toru.gif";
+const imgTrump = "img/trump.gif";
+const imgWhistle = "img/whistleMonster.gif";
+const imgShadowZombie = "img/zombieshadow.gif";
+const imgMaxence = "img/maxence.jpg";
 
 // Characters
-let Maxence = new Character(
+const Maxence = new Character(
   "Maxence", // Name
   imgMaxence, // Image
   10, // Strength
@@ -52,7 +52,7 @@ let Maxence = new Character(
   10 // Cuteness
 );
 
-let ShadowZombie = new Character(
+const ShadowZombie = new Character(
   "Shadow Zombie", // Name
   imgShadowZombie, // Image
   8, // Strength
@@ -61,7 +61,7 @@ let ShadowZombie = new Character(
   4 // Cuteness
 );
 
-let Whistle = new Character(
+const Whistle = new Character(
   "Whistle", // Name
   imgWhistle, // Image
   3, // Strength
@@ -70,7 +70,7 @@ let Whistle = new Character(
   8 // Cuteness
 );
 
-let Trump = new Character(
+const Trump = new Character(
   "Trump", // Name
   imgTrump, // Image
   7, // Strength
@@ -79,7 +79,7 @@ let Trump = new Character(
   1 // Cuteness
 );
 
-let WorkoutWilli = new Character(
+const WorkoutWilli = new Character(
   "Workout Willi", // Name
   imgWorkoutWilli, // Image
   5, // Strength
@@ -88,7 +88,7 @@ let WorkoutWilli = new Character(
   7 // Cuteness
 );
 
-let Hero = new Character(
+const Hero = new Character(
   "Sprite Hero", // Name
   imgHero, // Image
   9, // Strength
@@ -97,7 +97,7 @@ let Hero = new Character(
   3 // Cuteness
 );
 
-let Fox = new Character(
+const Fox = new Character(
   "BitFox", // Name
   imgFox, // Image
   4, // Strength
@@ -106,7 +106,7 @@ let Fox = new Character(
   8 // Cuteness
 );
 
-let LateLinda = new Character(
+const LateLinda = new Character(
   "Late Linda", // Name
   imgLateLinda, // Image
   5, // Strength
@@ -115,7 +115,7 @@ let LateLinda = new Character(
   5 // Cuteness
 );
 
-let RowdyRocker = new Character(
+const RowdyRocker = new Character(
   "Rowdy", // Name
   imgRowdyRocker, // Image
   8, // Strength
@@ -124,7 +124,7 @@ let RowdyRocker = new Character(
   4 // Cuteness
 );
 
-let WebDev = new Character(
+const WebDev = new Character(
   "WebDev", // Name
   imgWebDev, // Image
   2, // Strength
@@ -133,7 +133,7 @@ let WebDev = new Character(
   4 // Cuteness
 );
 
-let BuuHuu = new Character(
+const BuuHuu = new Character(
   "Buu Huu", // Name
   imgBuuHuu, // Image
   3, // Strength
@@ -142,7 +142,7 @@ let BuuHuu = new Character(
   5 // Cuteness
 );
 
-let Moss = new Character(
+const Moss = new Character(
   "Moss", // Name
   imgMoss, // Image
   2, // Strength
@@ -151,7 +151,7 @@ let Moss = new Character(
   10 // Cuteness
 );
 
-let JumpyJenny = new Character(
+const JumpyJenny = new Character(
   "Jumpy Jenny", // Name
   imgJumpyJenny, // Image
   5, // Strength
@@ -160,7 +160,7 @@ let JumpyJenny = new Character(
   6 // Cuteness
 );
 
-let HairyHarry = new Character(
+const HairyHarry = new Character(
   "Hairy Harry", // Name
   imgHairyHarry, // Image
   5, // Strength
@@ -169,7 +169,7 @@ let HairyHarry = new Character(
   6 // Cuteness
 );
 
-let MissEgg = new Character(
+const MissEgg = new Character(
   "Miss Egg", // Name
   imgMissEgg, // Image
   5, // Strength
@@ -178,7 +178,7 @@ let MissEgg = new Character(
   4 // Cuteness
 );
 
-let YummyCupcake = new Character(
+const YummyCupcake = new Character(
   "Yummy Cupcake", // Name
   imgYummyCupcake, // Image
   10, // Strength
@@ -187,7 +187,7 @@ let YummyCupcake = new Character(
   5 // Cuteness
 );
 
-let AngryBomb = new Character(
+const AngryBomb = new Character(
   "Angry Bomb", // Name
   imgAngryBomb, // Image
   10, // Strength
@@ -196,7 +196,7 @@ let AngryBomb = new Character(
   5 // Cuteness
 );
 
-let LovingBlobber = new Character(
+const LovingBlobber = new Character(
   "Loving Blobber", // Name
   imgLovingBlobber, // Image
   2, // Strength
@@ -205,7 +205,7 @@ let LovingBlobber = new Character(
   8 // Cuteness
 );
 
-let CuriousAlien = new Character(
+const CuriousAlien = new Character(
   "Curious Alien", // Name
   imgCuriousAlien, // Image
   1, // Strength
@@ -214,7 +214,7 @@ let CuriousAlien = new Character(
   5 // Cuteness
 );
 
-let crazyCat = new Character(
+const crazyCat = new Character(
   "Crazy Cat", // Name
   imgCrazyCat, // Image
   3, // Strength
@@ -223,7 +223,7 @@ let crazyCat = new Character(
   5 // Cuteness
 );
 
-let blooper = new Character(
+const blooper = new Character(
   "Blooper", // Name
   imgBlooper, // Image
   3, // Strength
@@ -232,7 +232,7 @@ let blooper = new Character(
   8 // Cuteness
 );
 
-let nonBinary = new Character(
+const nonBinary = new Character(
   "Non Binary", // Name
   imgNonBinary, // Image
   4, // Strength
@@ -241,7 +241,7 @@ let nonBinary = new Character(
   8 // Cuteness
 );
 
-let pinkKirby = new Character(
+const pinkKirby = new Character(
   "Pink Kirby", // Name
   imgPinkKirby, // Image
   4, // Strength
@@ -250,7 +250,7 @@ let pinkKirby = new Character(
   8 // Cuteness
 );
 
-let linkHero = new Character(
+const linkHero = new Character(
   "Link Hero", // Name
   imgLinkHero, // Image
   7, // Strength
@@ -259,7 +259,7 @@ let linkHero = new Character(
   2 // Cuteness
 );
 
-let dumbZombie = new Character(
+const dumbZombie = new Character(
   "Dumb Zombie", // Name
   imgDumbZombie, // Image
   7, // Strength
@@ -268,7 +268,7 @@ let dumbZombie = new Character(
   2 // Cuteness
 );
 
-let cuteMonster = new Character(
+const cuteMonster = new Character(
   "Cute Monster", // Name
   imgCuteMonster, // Image
   3, // Strength
@@ -277,7 +277,7 @@ let cuteMonster = new Character(
   10 // Cuteness
 );
 
-let strongWarrior = new Character(
+const strongWarrior = new Character(
   "Strong Warrior", // Name
   imgStrongWarrior, // Image
   10, // Strength
@@ -286,7 +286,7 @@ let strongWarrior = new Character(
   1 // Cuteness
 );
 
-let cardsDatabase = [
+const cardsDatabase = [
   cuteMonster,
   strongWarrior,
   linkHero,
