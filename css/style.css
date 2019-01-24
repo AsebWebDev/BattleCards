@@ -11,8 +11,13 @@ body {
 
 /* H E A D E R  */
 header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 #title {
@@ -46,10 +51,19 @@ em {
 /* I N F O B O A R D */
 
 #infoboard {
+  display:-webkit-box;
+  display:-ms-flexbox;
   display:flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .inputfield {
@@ -80,9 +94,16 @@ em {
 /* Board Player 1  */
 
 .header-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
   /* border: 10px solid rgba(251, 251, 145, 1); */
 }
@@ -109,10 +130,23 @@ em {
 
 .selected {
   border: 10px solid rgba(253,180,75,1);
-	animation-name: fadeInBorder;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 0.3s;
+	-webkit-animation-name: fadeInBorder;
+	        animation-name: fadeInBorder;
+	-webkit-animation-iteration-count: 1;
+	        animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+	        animation-timing-function: ease-in;
+	-webkit-animation-duration: 0.3s;
+	        animation-duration: 0.3s;
+} 
+
+@-webkit-keyframes fadeInBorder{
+	0% {
+		border: 10px solid rgba(253,180,75,0);
+	}
+	100% {
+		border: 10px solid rgba(253,180,75,1);
+	}
 } 
 
 @keyframes fadeInBorder{
@@ -129,41 +163,74 @@ em {
 #card-stack {
 width: 60%;
 height: 175px;
+display: -webkit-box;
+display: -ms-flexbox;
 display: flex;
-flex-direction: row;
-justify-content: space-around;
+-webkit-box-orient: horizontal;
+-webkit-box-direction: normal;
+    -ms-flex-direction: row;
+        flex-direction: row;
+-ms-flex-pack: distribute;
+    justify-content: space-around;
 margin-top: 0px;
 background: #00204a; 
 background: -webkit-linear-gradient(to top, #448ef6, #00204a);
+background: -webkit-gradient(linear, left bottom, left top, from(#448ef6), to(#00204a));
+background: -webkit-linear-gradient(bottom, #448ef6, #00204a);
+background: -o-linear-gradient(bottom, #448ef6, #00204a);
 background: linear-gradient(to top, #448ef6, #00204a);
 }
 
 /* I N F O B O X  */
 
 #infobox {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   margin: 20px;
 }
 
 #infobox-button-div{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 0;
 }
 
 /* G A M E B O A R D  */
 gameboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   margin-top: 30px;
 }
 
 .p-stack {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   padding: 30px 30px 30px 5px;
   background-color: #074684;
   height: 300px;
@@ -171,8 +238,13 @@ gameboard {
 }
 
 .p-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 #p1-stack {
@@ -188,10 +260,19 @@ gameboard {
   height: 300px;
   width: 50%;
   background-color: #520556;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 30px;
   border-radius: 10px;
 }
@@ -214,9 +295,16 @@ gameboard {
 /* C A R D  */
 
 .bc {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
   padding: 7px;;
   margin: 15px;
@@ -224,14 +312,12 @@ gameboard {
   width: 100px;
   border-radius: 15px;
   background-color: #0ea5c6;
-  -webkit-box-shadow: 1px 1px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow:    1px 1px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  -webkit-box-shadow: 1px 1px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */  /* Firefox 3.5 - 3.6 */
   box-shadow:         1px 1px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 .bc:hover {
   height: 160px;
-  /* height: 230px; */
   width: 130px;
   margin: 0 10px;
 }
@@ -297,14 +383,24 @@ gameboard {
 }
 
 footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   height: 170px;
   margin-top: 20px;
   border-radius: 10px;
   background: #00204a; 
   background: -webkit-linear-gradient(to bottom, #448ef6, #00204a);
+  background: -webkit-gradient(linear, left top, left bottom, from(#448ef6), to(#00204a));
+  background: -webkit-linear-gradient(top, #448ef6, #00204a);
+  background: -o-linear-gradient(top, #448ef6, #00204a);
   background: linear-gradient(to bottom, #448ef6, #00204a);
 }
 
@@ -325,7 +421,8 @@ footer {
 }
 
 #sound-div {
-  align-self: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
   margin-bottom: 30px;
 }
 
