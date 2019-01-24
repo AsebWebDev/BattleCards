@@ -278,7 +278,7 @@ const cuteMonster = new Character(
 );
 
 const strongWarrior = new Character(
-  "Strong Warrior", // Name
+  "Warrior", // Name
   imgStrongWarrior, // Image
   10, // Strength
   2, // Intelligence
