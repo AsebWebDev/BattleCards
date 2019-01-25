@@ -1,6 +1,7 @@
 body {
   background-color: #448ef6;
   font-family: 'Oswald', Tosans-serif;
+  min-height: 100%;
 }
 
 /* COLOR PALETTE */
@@ -399,7 +400,7 @@ footer {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: 170px;
+  height: 190px;
   margin-top: 20px;
   border-radius: 10px;
   background: #00204a; 
