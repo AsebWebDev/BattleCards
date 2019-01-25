@@ -107,7 +107,7 @@ class Game {
     $("#story-title").text("Which warrior should be part of your army?");
 
     // Click Listener Cardstack
-    $("#card-stack .bc").on("click", function () {
+    $("#card-stack .bc").on("click", function (event) {
       event.preventDefault();
       let clickedCard = $(this).attr("name");
       
@@ -145,7 +145,7 @@ class Game {
     $("#instr").text("Each player needs to pick ONE card for the upcoming battle.");
     $("#story-title").text("Get ready for battle! choose your hero...");
 
-    $("#p1-stack .bc").on("click", function () {
+    $("#p1-stack .bc").on("click", function (event) {
       event.preventDefault();
       let clickedCard = $(this).attr("name");
       let clickedCharacter = game.cardsArray.filter(obj => obj.name === clickedCard)[0];
@@ -163,7 +163,7 @@ class Game {
       }
     });
 
-    $("#p2-stack .bc").on("click", function () {
+    $("#p2-stack .bc").on("click", function (event) {
       
       let clickedCard = $(this).attr("name");
       let clickedCharacter = game.cardsArray.filter(obj => obj.name === clickedCard)[0];
@@ -199,7 +199,7 @@ class Game {
     
   
     // Current player chooses property to attack
-    $("#battle-field .bc p").on("click", function () {
+    $("#battle-field .bc p").on("click", function (event) {
       event.preventDefault();
       let selectedProperty = $(this).prop("class");
       game.currentPropertyInBattle = selectedProperty;
@@ -302,7 +302,7 @@ class Game {
         $("#story-title").text("Game over! The winner is " + winner.name);
         sndEndGame.play();
         $("#infobox button").text("Game Over! Click here to start again!");
-        $("#infobox-button").on("click", function () {
+        $("#infobox-button").on("click", function (event) {
           game.restartGame();
         });
       }
@@ -379,7 +379,7 @@ class Game {
   }
 
   addclickSound() {
-    $(".bc").on("click", () => {
+    $(".bc").on("click", (event) => {
       sndClick.play();
     });
   }

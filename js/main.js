@@ -47,13 +47,13 @@ game.currentPlayer = player1;
 // A click event is set for the game to start. 
 // After starting users will be asked how many rounds they want to play,
 // and dice who is first.
-$("#infobox-button").on("click", function () {
+$("#infobox-button").on("click", function (event) {
   event.preventDefault();
   game.startGame();
 });
 
 // Enter names Click Event
-$("#p1-name").click(function () {
+$("#p1-name").click(function (event) {
   $("#p1-name").hide();
   $("#player1nameinput").show();
 });
@@ -68,7 +68,7 @@ $("#player1nameinput").on("keypress", (e) => {
   }
 });
 
-$("#p2-name").click(function () {
+$("#p2-name").click(function (event) {
   $("#p2-name").hide();
   $("#player2nameinput").show();
 });
@@ -85,7 +85,7 @@ $("#player2nameinput").on("keypress", (e) => {
 
 // Turn sound off/on button click event
 
-$("#sound-button").on("click", function () {
+$("#sound-button").on("click", function (event) {
   event.preventDefault();
 
   if ($(this).text() === "Music OFF") {
