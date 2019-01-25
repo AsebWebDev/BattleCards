@@ -227,7 +227,6 @@ gameboard {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  margin-top: 30px;
 }
 
 .p-stack {
@@ -414,7 +413,7 @@ footer {
 .instructions-div {
   text-align: center;
   color: white;
-  opacity: 0.3;
+  opacity: 0;
   width: 40%;
 }
 
@@ -432,6 +431,14 @@ footer {
   -ms-flex-item-align: end;
       align-self: flex-end;
   margin-bottom: 30px;
+}
+
+#story-title {
+  margin: 0;
+}
+
+#story-title-div{
+  text-align: center;
 }
 
 .story-div {
@@ -478,4 +485,3 @@ footer {
      font-size: 0.5em; 
   }
 }
-

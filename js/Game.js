@@ -151,7 +151,7 @@ class Game {
       let clickedCharacter = game.cardsArray.filter(obj => obj.name === clickedCard)[0];
 
       if (game.currentPlayer === player1) {
-        $("#story").text(game.currentPlayer.name + " sent " + clickedCard + " to the Battlefield!");
+        $("#story-title").text(game.currentPlayer.name + " sent " + clickedCard + " to the Battlefield!");
         game.currentPlayer.currentCardInBattle = clickedCharacter;
         $("#bf-p1").append(this);
         let indexOfCard = player1.currentCards.indexOf(clickedCharacter);
@@ -169,7 +169,7 @@ class Game {
       let clickedCharacter = game.cardsArray.filter(obj => obj.name === clickedCard)[0];
 
       if (game.currentPlayer === player2) {
-        $("#story").text(game.currentPlayer.name + " sent " + clickedCard + " to the Battlefield!");
+        $("#story-title").text(game.currentPlayer.name + " sent " + clickedCard + " to the Battlefield!");
         game.currentPlayer.currentCardInBattle = clickedCharacter;
         $("#bf-p2").append(this);
         let indexOfCard = player2.currentCards.indexOf(clickedCharacter);
