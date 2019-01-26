@@ -1,20 +1,5 @@
 /*jshint esversion: 6 */
 
-// T O D O
-// -
-// create Readme
-// create more characters
-// big intro screen
-// event.preventDefault() überall hinzufügen
-
-// I F   T I M E   T O D O
-// find another style
-// add Background to battlefield
-// @media? to make site fully responsive on small screens
-
-// G E T   D O M 
-
-
 // G A M E    I N I T
 
 let game = new Game(cardsDatabase); //array comes from Character.js
@@ -35,14 +20,13 @@ let sndScore = $("#snd-score")[0];
   sndScore.load();
 let sndEndGame = $("#snd-endgame")[0];
   sndEndGame.load();
-  
-  
-printCharacters(); // to console, just for Dev
+
+// printCharacters(); // to console, just for Dev
 
 
 // Set default values
 game.currentPlayer = player1;
- 
+
 
 // A click event is set for the game to start. 
 // After starting users will be asked how many rounds they want to play,
@@ -96,5 +80,3 @@ $("#sound-button").on("click", function (event) {
     $(this).text("Music OFF");
   }
 });
-
-

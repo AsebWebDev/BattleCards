@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 
 class Game {
-  constructor(cardsArray){
+  constructor(cardsArray) {
     this.cardsArray = cardsArray;
     this.currentPlayer = {};
     this.currentPropertyInBattle = null;
@@ -15,7 +15,7 @@ class Game {
       temporaryValue, randomIndex;
     while (0 !== currentIndex) {
       randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
+      currentIndex--;
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
@@ -24,7 +24,6 @@ class Game {
   }
 
   fillCardStack() {
-    // game.cardsArray = cardsDatabase;
     game.shuffle(game.cardsArray);
     let cardStack = $("#card-stack");
     for (let i = 0; i < maxCards; i++) {
@@ -41,6 +40,7 @@ class Game {
     }
   }
 
+    // S T A R T   G A M E --- PHASE 0
   startGame() {
     game.currentPhase = 0;
     $("#title").hide();
@@ -74,7 +74,7 @@ class Game {
       $('#infobox-button').off();
       $('#infobox-button').on('click', function () {
         player2.currentDiceValue = game.rollTheDice();
-      $("#story").text(player2.name + " diced " + player1.currentDiceValue);
+        $("#story").text(player2.name + " diced " + player1.currentDiceValue);
         if (player2.currentDiceValue > player1.currentDiceValue) {
           game.currentPlayer = player2;
         } else game.currentPlayer = player1;
@@ -86,7 +86,7 @@ class Game {
           player2.currentDiceValue = 0;
           $("#story").text("");
           $("#dice").text("Dice •ᴗ•");
-          $("dice div").hide();    
+          $("dice div").hide();
         }, 2000);
         $("#story-title").text(game.currentPlayer.name + " starts!");
         game.startPhase1();
@@ -94,6 +94,7 @@ class Game {
     });
   }
   
+  // C R E A T E   Y O U R   S T A C K--- PHASE 1
   // Phase 1: Player pick their cards from main stack.
   //          When done, Phase 2
   startPhase1() {
@@ -110,11 +111,11 @@ class Game {
     $("#card-stack .bc").on("click", function (event) {
       event.preventDefault();
       let clickedCard = $(this).attr("name");
-      
+
       $("#story").text(game.currentPlayer.name + " picked " + clickedCard + "! Beware!!!");
       setTimeout(() => {
         $("#story").text("");
-      },1500);
+      }, 1500);
       let clickedCharacter = game.cardsArray.filter(obj => obj.name === clickedCard)[0];
 
       game.currentPlayer.currentCards.push(clickedCharacter);
@@ -134,6 +135,7 @@ class Game {
     });
   }
 
+  // P I C K   C A R D   F O R    B A T T L E  --- PHASE 2
   // Phase 2: Each Player picks a card for upcoming battle
   //          When done, Battle starts
   startPhase2() {
@@ -164,7 +166,7 @@ class Game {
     });
 
     $("#p2-stack .bc").on("click", function (event) {
-      
+
       let clickedCard = $(this).attr("name");
       let clickedCharacter = game.cardsArray.filter(obj => obj.name === clickedCard)[0];
 
@@ -182,7 +184,8 @@ class Game {
     });
   }
 
- // Battle-Phase:  Current player chooses property of current card on battlefield.
+  // B A T T L E --- PHASE 3
+  // Battle-Phase:  Current player chooses property of current card on battlefield.
   //                Then each Player can use PowerUp and dices (TODO)
   //                When players stacks are empty, check if there is another round to play
   //                and if not, who won ==> Gameover
@@ -203,33 +206,32 @@ class Game {
       event.preventDefault();
       let selectedProperty = $(this).prop("class");
       game.currentPropertyInBattle = selectedProperty;
-      $("#story").text(game.currentPlayer.name+" attacks with "+game.currentPropertyInBattle+"!");
-      
+      $("#story").text(game.currentPlayer.name + " attacks with " + game.currentPropertyInBattle + "!");
+
       let player1prop = player1.currentCardInBattle[game.currentPropertyInBattle];
       let player2prop = player2.currentCardInBattle[game.currentPropertyInBattle];
-      
+
       player1.score += player1prop;
       player2.score += player2prop;
       game.updateBoard();
 
-      $("#instr").text("Each player needs to dice to add diced number to the current value of "+game.currentPropertyInBattle+".");
-      $("#story-title").text("Get lucky, "+game.currentPlayer.name+"! Dice to increase your attack!");
-   
+      $("#instr").text("Each player needs to dice to add diced number to the current value of " + game.currentPropertyInBattle + ".");
+      $("#story-title").text("Get lucky, " + game.currentPlayer.name + "! Dice to increase your attack!");
+
       $("#infobox-button").text("Click to roll dice, " + game.currentPlayer.name);
       $("dice div").show();
       $('#infobox-button').on('click', function (event) {
-        // event.stopImmediatePropagation();    
-        game.setClasses();    
-        game.diceCurrentPlayer();  
+        game.setClasses();
+        game.diceCurrentPlayer();
         game.currentPlayer.score += game.currentPlayer.currentDiceValue;
         game.updateBoard();
-        game.switchPlayer();    
+        game.switchPlayer();
         $("#infobox-button").text("Click to roll dice, " + game.currentPlayer.name);
-        $("#story-title").text("Get lucky, "+game.currentPlayer.name+"! Dice to increase your attack!");
+        $("#story-title").text("Get lucky, " + game.currentPlayer.name + "! Dice to increase your attack!");
         $('#infobox-button').off();
         $('#infobox-button').on('click', function (event) {
           event.stopImmediatePropagation();
-          game.setClasses();    
+          game.setClasses();
           game.diceCurrentPlayer();
           game.currentPlayer.score += game.currentPlayer.currentDiceValue;
           game.updateBoard();
@@ -239,24 +241,21 @@ class Game {
           let player1Total = player1prop + player1.currentDiceValue;
           let player2Total = player2prop + player2.currentDiceValue;
 
-          
+
           $("#story-title").text("Wow, what a fight! Here yo go:");
-  
+
           game.findWinner(player1Total, player2Total);
-          // $("#battle-field .bc").fadeOut();
-          // setTimeout(() => {
           game.cleanBattlefield();
-          // }, 2000);
-  
+
           // check if cards left, game is over or another round to play
           if (player1.currentCards.length === 0 && player1.currentCards.length === 0) {
             game.updateBoard();
             // check if its game over, else start another round
             if (game.checkGameOver() === true) {
-              $('#battle-field').css("background-image", "url('img/gameoverbig.gif')"); 
-              $('#battle-field').css("background-position-y", "center");  
-              $('#battle-field').css("background-position-x", "center");  
-              $('#battle-field').css("background-repeat", "no-repeat");  
+              $('#battle-field').css("background-image", "url('img/gameoverbig.gif')");
+              $('#battle-field').css("background-position-y", "center");
+              $('#battle-field').css("background-position-x", "center");
+              $('#battle-field').css("background-repeat", "no-repeat");
             } else {
               game.currentRound++;
               game.startPhase1();
@@ -265,27 +264,27 @@ class Game {
         }); // end dice for player 2   
       }); // end dice for player 1
     }); // end choose property
-  } // end of battle function
+    } // end of battle function
 
   rollTheDice() {
     sndDice.play();
     let i,
-        faceValue,
-        sum = 0,
-        output = '',
-        diceCount = 2;
+      faceValue,
+      sum = 0,
+      output = '',
+      diceCount = 2;
     for (i = 0; i < diceCount; i++) {
-        faceValue = Math.floor(Math.random() * 6);
-        output += "&#x268" + faceValue + "; ";
-        sum += faceValue+1;
+      faceValue = Math.floor(Math.random() * 6);
+      output += "&#x268" + faceValue + "; ";
+      sum += faceValue + 1;
     }
     document.getElementById('dice').innerHTML = output;
     return sum;
   }
 
-  diceCurrentPlayer() {
+  diceCurrentPlayer() {
     game.currentPlayer.currentDiceValue = game.rollTheDice();
-    console.log(game.currentPlayer.name+" diced with result "+game.currentPlayer.currentDiceValue);
+    console.log(game.currentPlayer.name + " diced with result " + game.currentPlayer.currentDiceValue);
     setTimeout(() => {
       $("#dice").text("Dice •ᴗ•");
     }, 1200);
@@ -294,7 +293,7 @@ class Game {
   checkGameOver() {
     if (game.currentRound === game.roundsToPlay) {
       let winner;
-      if (player1.score === player2.score){
+      if (player1.score === player2.score) {
         $("#infobox button").text("Game over! Score is equal. Please choose who is best in a proper fist fight");
       } else {
         if (player1.score > player2.score) winner = player1;
@@ -306,7 +305,7 @@ class Game {
           game.restartGame();
         });
       }
-    return true;
+      return true;
     } else return false;
   }
 
@@ -330,7 +329,7 @@ class Game {
     }, 1000);
   }
 
-  setClasses(){
+  setClasses() {
     $("#p1-board").removeClass("selected");
     $("#p2-board").removeClass("selected");
     if (game.currentPlayer === player1) {
@@ -353,11 +352,11 @@ class Game {
       game.currentPlayer = player1;
     }
     game.setClasses();
-    $("#infobox button").text("Your turn "+game.currentPlayer.name);
+    $("#infobox button").text("Your turn " + game.currentPlayer.name);
   }
 
-  updateBoard(){
-    $("#infobox button").text("Your turn "+game.currentPlayer.name);
+  updateBoard() {
+    $("#infobox button").text("Your turn " + game.currentPlayer.name);
     $("#p1-score").text(player1.score);
     $("#p2-score").text(player2.score);
     game.setClasses();
@@ -366,14 +365,14 @@ class Game {
   findWinner(BC1property, BC2property) {
     if (BC1property === BC2property) {
       console.log("Equal!");
-  
+
     } else if (BC1property > BC2property) {
-        console.log(player1.name + " won!");
-        game.currentPlayer = player1;
-  
+      console.log(player1.name + " won!");
+      game.currentPlayer = player1;
+
     } else if (BC1property < BC2property) {
-        console.log(player2.name + " won!");
-        game.currentPlayer = player2;
+      console.log(player2.name + " won!");
+      game.currentPlayer = player2;
     }
     sndScore.play();
   }

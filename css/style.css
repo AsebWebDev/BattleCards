@@ -38,7 +38,6 @@ i{
 #summary {
   background-color: #fdb44b;
   height: 302px;
-  /* overflow: auto; */
   width: 100%;
   border-radius: 10px;
   padding: 10px;
@@ -113,7 +112,6 @@ i{
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
-  /* border: 10px solid rgba(251, 251, 145, 1); */
 }
 
 .header-box span {
