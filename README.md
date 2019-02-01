@@ -1,4 +1,4 @@
-# BattleCards
+# BattleCards ![](https://img.shields.io/badge/Project-%231-brightgreen.svg)
 ## 1st Ironhack Project - a browser card game, based on quartet. After two weeks of learning at the ironhack bootcamp i created this game in week three with Javascript & jQuery and CSS & Semantic-UI.
 
 **Introduction**
